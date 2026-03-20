@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>404 — Harishpranav R</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #07090e;
+        --cyan: #00d4ff;
+        --text: #edf2ff;
+        --muted: #7a8fa6;
+        --faint: #1e2533;
+        --faint2: #2a3344;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "DM Sans", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        overflow: hidden;
+        cursor: none;
+      }
+
+      /* CURSOR */
+      #cur {
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        width: 14px;
+        height: 14px;
+        filter: drop-shadow(0 0 5px var(--cyan))
+          drop-shadow(0 0 10px rgba(0, 212, 255, 0.4));
+        transition:
+          transform 0.15s ease,
+          filter 0.15s ease;
+      }
+      #cur svg {
+        width: 14px;
+        height: 14px;
+        display: block;
+      }
+      #cur.hovering {
+        transform: scale(1.25);
+        filter: drop-shadow(0 0 8px var(--cyan))
+          drop-shadow(0 0 18px rgba(0, 212, 255, 0.6));
+      }
+
+      /* NOISE */
+      .noise {
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
+      /* GRID LINES BG */
+      .grid-bg {
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+      }
+
+      /* GLOW */
+      .glow {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(0, 212, 255, 0.06) 0%,
+          transparent 65%
+        );
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* CONTENT */
+      .wrap {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 24px;
+      }
+
+      /* 404 GLITCH */
+      .glitch-wrap {
+        position: relative;
+        margin-bottom: 8px;
+      }
+      .big404 {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: clamp(120px, 22vw, 220px);
+        line-height: 1;
+        letter-spacing: -0.04em;
+        color: transparent;
+        -webkit-text-stroke: 1.5px var(--cyan);
+        position: relative;
+        animation: flicker 4s infinite;
+      }
+      .big404::before,
+      .big404::after {
+        content: "404";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: clamp(120px, 22vw, 220px);
+        line-height: 1;
+        letter-spacing: -0.04em;
+        color: transparent;
+      }
+      .big404::before {
+        -webkit-text-stroke: 1.5px #ff003c;
+        animation: glitch1 3s infinite;
+        clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
+      }
+      .big404::after {
+        -webkit-text-stroke: 1.5px var(--cyan);
+        animation: glitch2 3s infinite;
+        clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+      }
+
+      @keyframes glitch1 {
+        0%,
+        90%,
+        100% {
+          transform: translate(0);
+        }
+        92% {
+          transform: translate(-4px, 2px);
+        }
+        94% {
+          transform: translate(4px, -2px);
+        }
+        96% {
+          transform: translate(-2px, 0);
+        }
+        98% {
+          transform: translate(2px, 1px);
+        }
+      }
+      @keyframes glitch2 {
+        0%,
+        88%,
+        100% {
+          transform: translate(0);
+        }
+        90% {
+          transform: translate(4px, -1px);
+        }
+        93% {
+          transform: translate(-4px, 2px);
+        }
+        95% {
+          transform: translate(2px, -2px);
+        }
+        97% {
+          transform: translate(-2px, 1px);
+        }
+      }
+      @keyframes flicker {
+        0%,
+        95%,
+        100% {
+          opacity: 1;
+        }
+        96% {
+          opacity: 0.85;
+        }
+        97% {
+          opacity: 1;
+        }
+        98% {
+          opacity: 0.9;
+        }
+        99% {
+          opacity: 1;
+        }
+      }
+
+      /* SCAN LINE */
+      .scanline {
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        height: 40px;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          rgba(0, 212, 255, 0.04),
+          transparent
+        );
+        animation: scan 5s linear infinite;
+        pointer-events: none;
+        z-index: 3;
+      }
+      @keyframes scan {
+        0% {
+          top: -5%;
+        }
+        100% {
+          top: 105%;
+        }
+      }
+
+      /* TEXT */
+      .err-code {
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        color: var(--cyan);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .err-code::before,
+      .err-code::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--cyan);
+        opacity: 0.3;
+      }
+      h1.err-title {
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: clamp(20px, 4vw, 28px);
+        color: var(--text);
+        letter-spacing: -0.02em;
+        margin-bottom: 12px;
+      }
+      .err-sub {
+        font-size: 15px;
+        color: var(--muted);
+        line-height: 1.7;
+        max-width: 400px;
+        font-weight: 300;
+        margin-bottom: 36px;
+      }
+      .err-sub span {
+        color: var(--cyan);
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+      }
+
+      /* BUTTONS */
+      .btns {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .btn-home {
+        background: var(--cyan);
+        color: #07090e;
+        border: none;
+        border-radius: 50px;
+        padding: 12px 28px;
+        font-size: 13.5px;
+        font-weight: 500;
+        font-family: "DM Sans", sans-serif;
+        cursor: none;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        box-shadow: 0 0 18px rgba(0, 212, 255, 0.28);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .btn-home:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 28px rgba(0, 212, 255, 0.45);
+      }
+      .btn-back {
+        background: transparent;
+        color: var(--text);
+        border: 0.5px solid var(--faint2);
+        border-radius: 50px;
+        padding: 12px 28px;
+        font-size: 13.5px;
+        font-weight: 400;
+        font-family: "DM Sans", sans-serif;
+        cursor: none;
+        transition:
+          border-color 0.2s,
+          color 0.2s;
+        text-decoration: none;
+      }
+      .btn-back:hover {
+        border-color: var(--cyan);
+        color: var(--cyan);
+      }
+
+      /* BOTTOM BRAND */
+      .brand {
+        position: fixed;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: "Syne", sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--faint2);
+        letter-spacing: 0.14em;
+        z-index: 2;
+        white-space: nowrap;
+      }
+
+      /* CORNER DECORATIONS */
+      .corner {
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        z-index: 2;
+      }
+      .corner.tl {
+        top: 24px;
+        left: 24px;
+        border-top: 1px solid rgba(0, 212, 255, 0.2);
+        border-left: 1px solid rgba(0, 212, 255, 0.2);
+      }
+      .corner.tr {
+        top: 24px;
+        right: 24px;
+        border-top: 1px solid rgba(0, 212, 255, 0.2);
+        border-right: 1px solid rgba(0, 212, 255, 0.2);
+      }
+      .corner.bl {
+        bottom: 24px;
+        left: 24px;
+        border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        border-left: 1px solid rgba(0, 212, 255, 0.2);
+      }
+      .corner.br {
+        bottom: 24px;
+        right: 24px;
+        border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        border-right: 1px solid rgba(0, 212, 255, 0.2);
+      }
+
+      /* ENTRY ANIMATION */
+      .wrap > * {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      .glitch-wrap {
+        animation: up 0.6s 0.1s forwards;
+      }
+      .err-code {
+        animation: up 0.6s 0.25s forwards;
+      }
+      h1.err-title {
+        animation: up 0.6s 0.35s forwards;
+      }
+      .err-sub {
+        animation: up 0.6s 0.45s forwards;
+      }
+      .btns {
+        animation: up 0.6s 0.55s forwards;
+      }
+      @keyframes up {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .btns {
+          flex-direction: column;
+          align-items: center;
+        }
+        .btn-home,
+        .btn-back {
+          width: 100%;
+          max-width: 260px;
+          justify-content: center;
+          text-align: center;
+        }
+        .corner {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="cur">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M4 2L20 12L12 13.5L8 20L4 2Z"
+          fill="#00D4FF"
+          stroke="#00D4FF"
+          stroke-width="0.5"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+
+    <div class="noise"></div>
+    <div class="grid-bg"></div>
+    <div class="glow"></div>
+    <div class="scanline"></div>
+
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+
+    <div class="wrap">
+      <div class="glitch-wrap">
+        <div class="big404">404</div>
+      </div>
+      <div class="err-code">PAGE NOT FOUND</div>
+      <h1 class="err-title">You've wandered off the map.</h1>
+      <p class="err-sub">
+        This page doesn't exist — or maybe it did and I'm still building it.
+        Either way, <span>the good stuff is back home.</span>
+      </p>
+      <div class="btns">
+        <a class="btn-home" href="index.html">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <polyline points="9 22 9 12 15 12 15 22" />
+          </svg>
+          Back to Home
+        </a>
+        <a class="btn-back" href="javascript:history.back()">← Go Back</a>
+      </div>
+    </div>
+
+    <div class="brand">HARISHPRANAV R</div>
+
+    <script>
+      const cur = document.getElementById("cur");
+      let mx = 0,
+        my = 0;
+      document.addEventListener("mousemove", (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        cur.style.left = mx + "px";
+        cur.style.top = my + "px";
+        cur.style.opacity = "1";
+      });
+      document.addEventListener("mouseleave", () => {
+        cur.style.opacity = "0";
+      });
+      document.addEventListener("mouseenter", () => {
+        cur.style.opacity = "1";
+      });
+      document.querySelectorAll("a").forEach((el) => {
+        el.addEventListener("mouseenter", () => cur.classList.add("hovering"));
+        el.addEventListener("mouseleave", () =>
+          cur.classList.remove("hovering"),
+        );
+      });
+    </script>
+  </body>
+</html>
