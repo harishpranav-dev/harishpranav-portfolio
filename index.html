@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>Harishpranav R — Full Stack Developer</title>
+    <title>Harishpranav R — Full-Stack Developer</title>
     <meta
       name="description"
-      content="Harishpranav R — Full Stack Developer from Tamil Nadu. I find real-world problems and build full-stack products that solve them."
+      content="Harishpranav R — full-stack developer from Tamil Nadu. I hunt the cracks in everyday software and ship products that fill them. Problem-first, AI-native."
     />
-    <meta property="og:title" content="Harishpranav R — Full Stack Developer" />
+    <meta property="og:title" content="Harishpranav R — Full-Stack Developer" />
     <meta
       property="og:description"
-      content="I find the cracks in the real world — then build full-stack products that fill them. Problem-first. User-obsessed."
+      content="I treat 'that's just how it is' as a bug report — then build the full-stack fix. Problem-first. User-obsessed. AI-native."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.harishpranav.work" />
@@ -22,24 +22,26 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Harishpranav R — Full Stack Developer"
+      content="Harishpranav R — Full-Stack Developer"
     />
     <meta
       name="twitter:description"
-      content="I find the cracks in the real world — then build full-stack products that fill them."
+      content="I treat 'that's just how it is' as a bug report — then build the full-stack fix."
     />
     <meta
       name="twitter:image"
       content="https://www.harishpranav.work/images/Portfolio2.png"
     />
-    <meta name="theme-color" content="#07090e" />
+    <meta name="theme-color" content="#0b0c10" />
     <link
       rel="icon"
       type="image/svg+xml"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2307090e'/%3E%3Crect width='32' height='32' rx='8' fill='none' stroke='%2300d4ff' stroke-width='1' opacity='0.4'/%3E%3Ctext x='50%25' y='52%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='13' fill='%2300d4ff' letter-spacing='-0.5'%3EHP%3C/text%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230b0c10'/%3E%3Crect x='0.5' y='0.5' width='31' height='31' rx='8.5' fill='none' stroke='%234c7df0' stroke-width='1' opacity='0.55'/%3E%3Ctext x='50%25' y='53%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='13' fill='%23eae7df' letter-spacing='-0.5'%3EHP%3C/text%3E%3C/svg%3E"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -51,777 +53,1014 @@
         padding: 0;
       }
       :root {
-        --bg: #07090e;
-        --bg2: #0b0e15;
-        --bg3: #10131c;
-        --cyan: #00d4ff;
-        --cyan-glow: rgba(0, 212, 255, 0.15);
-        --cyan-faint: rgba(0, 212, 255, 0.07);
-        --cyan-border: rgba(0, 212, 255, 0.18);
-        --text: #edf2ff;
-        --muted: #7a8fa6;
-        --faint: #1e2533;
-        --faint2: #2a3344;
+        /* ── palette: ink base + build-blue / signal-amber duo ── */
+        --ink: #0b0c10;
+        --ink-2: #101218;
+        --ink-3: #161a22;
+        --paper: #eae7df; /* warm white */
+        --paper-dim: #c7c8cd;
+        --muted: #838a99;
+        --muted-2: #5c6272;
+        --line: rgba(234, 231, 223, 0.09);
+        --line-2: rgba(234, 231, 223, 0.16);
+        --blue: #4c7df0; /* the fix / interactive */
+        --blue-soft: rgba(76, 125, 240, 0.12);
+        --blue-line: rgba(76, 125, 240, 0.32);
+        --amber: #f2a93b; /* the problem / signal */
+        --amber-soft: rgba(242, 169, 59, 0.12);
+        --amber-line: rgba(242, 169, 59, 0.3);
+
+        --f-disp: "Bricolage Grotesque", sans-serif;
+        --f-body: "Instrument Sans", sans-serif;
+        --f-mono: "JetBrains Mono", monospace;
+
+        --pad-x: 7vw;
       }
       html {
         scroll-behavior: smooth;
       }
       body {
-        background: var(--bg);
-        color: var(--text);
-        font-family: "DM Sans", sans-serif;
+        background: var(--ink);
+        color: var(--paper);
+        font-family: var(--f-body);
+        font-size: 16px;
+        line-height: 1.6;
         overflow-x: hidden;
-        cursor: none;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
       }
-      /* CURSOR */
-      #cur {
-        position: fixed;
-        pointer-events: none;
-        z-index: 9999;
-        width: 14px;
-        height: 14px;
-        filter: drop-shadow(0 0 5px var(--cyan))
-          drop-shadow(0 0 10px rgba(0, 212, 255, 0.4));
-        transition:
-          transform 0.15s ease,
-          filter 0.15s ease;
+      a {
+        color: inherit;
+        text-decoration: none;
       }
-      #cur svg {
-        width: 14px;
-        height: 14px;
-        display: block;
+      ::selection {
+        background: var(--blue);
+        color: var(--ink);
       }
-      #cur.hovering {
-        transform: scale(1.25);
-        filter: drop-shadow(0 0 8px var(--cyan))
-          drop-shadow(0 0 18px rgba(0, 212, 255, 0.6));
-      }
-      #cur-dot {
-        display: none;
-      }
-      #cur-ring {
-        display: none;
+      :focus-visible {
+        outline: 2px solid var(--blue);
+        outline-offset: 3px;
+        border-radius: 3px;
       }
 
-      /* NOISE OVERLAY */
-      .noise {
+      /* subtle grain — atmosphere, not a gimmick */
+      .grain {
         position: fixed;
         inset: 0;
         z-index: 1;
         pointer-events: none;
-        opacity: 0.03;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+        opacity: 0.028;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
       }
 
-      /* NAV */
-      nav {
-        position: fixed;
-        top: 18px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 200;
-        background: rgba(7, 9, 14, 0.75);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
-        border: 0.5px solid var(--faint2);
-        border-radius: 50px;
-        padding: 11px 28px;
-        display: flex;
-        gap: 28px;
-        align-items: center;
-        transition: border-color 0.3s;
-      }
-      nav:hover {
-        border-color: var(--cyan-border);
-      }
-      nav .logo {
-        font-family: "Syne", sans-serif;
-        font-weight: 800;
-        font-size: 13px;
-        color: var(--text);
-        letter-spacing: 0.1em;
-        margin-right: 6px;
-      }
-      nav a {
-        font-size: 12.5px;
-        color: var(--muted);
-        text-decoration: none;
-        letter-spacing: 0.04em;
-        transition: color 0.2s;
-        font-weight: 400;
-      }
-      nav a:hover {
-        color: var(--cyan);
-      }
-      a {
-        cursor: none;
-      }
-
-      /* SECTIONS */
+      /* ── shared layout ── */
       section {
         position: relative;
         z-index: 2;
       }
       .wrap {
-        padding: 110px 7vw;
+        padding: 108px var(--pad-x);
+        max-width: 1320px;
+        margin: 0 auto;
       }
-
-      /* HERO */
-      #hero {
-        min-height: 100vh;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        align-items: center;
-        gap: 0;
-        overflow: hidden;
-      }
-      .hero-left {
-        padding: 0 7vw;
-        position: relative;
-        z-index: 3;
-      }
-      .hero-right {
-        position: relative;
-        height: 100vh;
-        overflow: hidden;
-      }
-      .hero-right img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center top;
-        filter: brightness(0.7) contrast(1.05);
-      }
-      .hero-right::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to right, var(--bg) 0%, transparent 50%);
-      }
-      .hero-glow {
-        position: absolute;
-        top: 30%;
-        left: -10%;
-        width: 480px;
-        height: 480px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(0, 212, 255, 0.055) 0%,
-          transparent 70%
-        );
-        pointer-events: none;
-      }
-      .badge {
+      .eyebrow {
+        font-family: var(--f-mono);
+        font-size: 12px;
+        letter-spacing: 0.02em;
+        color: var(--muted);
+        margin-bottom: 22px;
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        border: 0.5px solid var(--cyan-border);
-        background: var(--cyan-faint);
-        border-radius: 50px;
-        padding: 6px 16px;
-        font-size: 11.5px;
-        color: var(--cyan);
-        letter-spacing: 0.08em;
-        margin-bottom: 26px;
-        opacity: 0;
-        animation: up 0.6s 0.2s forwards;
       }
-      .badge-dot {
-        width: 6px;
-        height: 6px;
-        background: var(--cyan);
+      .eyebrow b {
+        color: var(--blue);
+        font-weight: 600;
+      }
+      .eyebrow .amb {
+        color: var(--amber);
+        font-weight: 600;
+      }
+      h2.stitle {
+        font-family: var(--f-disp);
+        font-weight: 700;
+        font-size: clamp(30px, 4.6vw, 58px);
+        line-height: 1.02;
+        letter-spacing: -0.025em;
+      }
+      .lead {
+        color: var(--muted);
+        font-size: clamp(15px, 1.4vw, 17px);
+        line-height: 1.75;
+        max-width: 52ch;
+      }
+
+      /* ── nav ── */
+      nav {
+        position: fixed;
+        top: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 200;
+        background: rgba(11, 12, 16, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--line-2);
+        border-radius: 14px;
+        padding: 9px 10px 9px 18px;
+        display: flex;
+        gap: 4px;
+        align-items: center;
+      }
+      nav .logo {
+        font-family: var(--f-disp);
+        font-weight: 800;
+        font-size: 15px;
+        letter-spacing: 0.02em;
+        margin-right: 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+      }
+      nav .logo::before {
+        content: "";
+        width: 7px;
+        height: 7px;
         border-radius: 50%;
-        animation: pulse 2s infinite;
+        background: var(--blue);
+        box-shadow: 0 0 0 3px var(--blue-soft);
       }
-      @keyframes pulse {
+      nav .links {
+        display: flex;
+        gap: 2px;
+        align-items: center;
+      }
+      nav .links a {
+        font-family: var(--f-mono);
+        font-size: 12.5px;
+        color: var(--muted);
+        letter-spacing: -0.01em;
+        padding: 7px 12px;
+        border-radius: 8px;
+        transition:
+          color 0.18s,
+          background 0.18s;
+      }
+      nav .links a:hover {
+        color: var(--paper);
+        background: rgba(234, 231, 223, 0.05);
+      }
+
+      /* ── hero ── */
+      #hero {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: stretch;
+      }
+      .hero-left {
+        padding: 148px var(--pad-x) 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        z-index: 3;
+      }
+      /* the seam — a hairline "crack" running down the hero */
+      .hero-left::before {
+        content: "";
+        position: absolute;
+        left: calc(var(--pad-x) - 22px);
+        top: 130px;
+        bottom: 70px;
+        width: 1px;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          var(--line-2) 12%,
+          var(--line-2) 88%,
+          transparent
+        );
+      }
+      .hero-left::after {
+        content: "";
+        position: absolute;
+        left: calc(var(--pad-x) - 25px);
+        top: 46%;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--amber);
+        box-shadow: 0 0 0 4px var(--amber-soft);
+        animation: seampulse 3.4s ease-in-out infinite;
+      }
+      @keyframes seampulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(0.72);
+          opacity: 0.55;
+        }
+      }
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        font-family: var(--f-mono);
+        font-size: 12px;
+        color: var(--paper-dim);
+        border: 1px solid var(--line-2);
+        background: rgba(234, 231, 223, 0.03);
+        padding: 7px 14px;
+        border-radius: 50px;
+        margin-bottom: 30px;
+        width: fit-content;
+        opacity: 0;
+        animation: rise 0.7s 0.15s forwards;
+      }
+      .status .live {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #3ddc84;
+        box-shadow: 0 0 8px #3ddc84;
+        animation: blink 2s infinite;
+      }
+      @keyframes blink {
         0%,
         100% {
           opacity: 1;
         }
         50% {
-          opacity: 0.25;
+          opacity: 0.3;
         }
       }
       h1.hname {
-        font-family: "Syne", sans-serif;
+        font-family: var(--f-disp);
         font-weight: 800;
-        font-size: clamp(48px, 6.5vw, 88px);
-        line-height: 0.95;
-        letter-spacing: -0.03em;
-        color: var(--text);
+        font-size: clamp(52px, 8.4vw, 118px);
+        line-height: 0.9;
+        letter-spacing: -0.04em;
         opacity: 0;
-        animation: up 0.7s 0.35s forwards;
+        animation: rise 0.8s 0.28s forwards;
       }
-      h1.hname .outline {
-        -webkit-text-stroke: 1.5px var(--cyan);
-        color: transparent;
+      h1.hname .stroke {
         display: block;
+        color: transparent;
+        -webkit-text-stroke: 1.4px var(--blue);
+      }
+      .htag {
+        font-family: var(--f-mono);
+        font-size: 13px;
+        color: var(--amber);
+        letter-spacing: 0.01em;
+        margin-top: 26px;
+        opacity: 0;
+        animation: rise 0.8s 0.42s forwards;
       }
       .hsub {
-        margin-top: 22px;
-        max-width: 460px;
-        font-size: 15px;
-        line-height: 1.75;
+        margin-top: 20px;
+        max-width: 44ch;
         color: var(--muted);
-        font-weight: 300;
+        font-size: clamp(15px, 1.4vw, 17px);
+        line-height: 1.72;
         opacity: 0;
-        animation: up 0.7s 0.5s forwards;
+        animation: rise 0.8s 0.52s forwards;
       }
-      .hpills {
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-        margin-top: 24px;
-        opacity: 0;
-        animation: up 0.7s 0.65s forwards;
-      }
-      .hpill {
-        border: 0.5px solid var(--faint2);
-        border-radius: 50px;
-        padding: 6px 14px;
-        font-size: 11.5px;
-        color: var(--muted);
-        background: rgba(255, 255, 255, 0.03);
-        letter-spacing: 0.04em;
-        transition:
-          border-color 0.2s,
-          color 0.2s;
-      }
-      .hpill:hover {
-        border-color: var(--cyan);
-        color: var(--cyan);
+      .hsub b {
+        color: var(--paper);
+        font-weight: 500;
       }
       .hbtns {
         display: flex;
         gap: 12px;
-        margin-top: 32px;
-        opacity: 0;
-        animation: up 0.7s 0.8s forwards;
+        margin-top: 36px;
         flex-wrap: wrap;
-      }
-      .btn-p {
-        background: var(--cyan);
-        color: #07090e;
-        border: none;
-        border-radius: 50px;
-        padding: 12px 26px;
-        font-size: 13.5px;
-        font-weight: 500;
-        font-family: "DM Sans", sans-serif;
-        cursor: none;
-        transition:
-          transform 0.2s,
-          box-shadow 0.2s;
-        box-shadow: 0 0 18px rgba(0, 212, 255, 0.28);
-      }
-      .btn-p:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 0 28px rgba(0, 212, 255, 0.45);
-      }
-      .btn-o {
-        background: transparent;
-        color: var(--text);
-        border: 0.5px solid var(--faint2);
-        border-radius: 50px;
-        padding: 12px 26px;
-        font-size: 13.5px;
-        font-weight: 400;
-        font-family: "DM Sans", sans-serif;
-        cursor: none;
-        transition:
-          border-color 0.2s,
-          color 0.2s;
-      }
-      .btn-o:hover {
-        border-color: var(--cyan);
-        color: var(--cyan);
-      }
-      .scroll-cue {
-        position: absolute;
-        bottom: 32px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 7px;
         opacity: 0;
-        animation: up 0.7s 1.1s forwards;
-        z-index: 3;
+        animation: rise 0.8s 0.66s forwards;
       }
-      .scroll-cue span {
-        font-size: 10px;
-        color: var(--muted);
-        letter-spacing: 0.14em;
-      }
-      .scroll-line {
-        width: 1px;
-        height: 44px;
-        background: linear-gradient(to bottom, var(--cyan), transparent);
-      }
-
-      /* ABOUT */
-      #about {
-        background: var(--bg);
-      }
-      .about-grid {
-        display: grid;
-        grid-template-columns: 1fr 1.1fr;
-        gap: 72px;
+      .btn {
+        font-family: var(--f-mono);
+        font-size: 13px;
+        letter-spacing: -0.01em;
+        padding: 13px 22px;
+        border-radius: 10px;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition:
+          transform 0.18s,
+          box-shadow 0.18s,
+          border-color 0.18s,
+          color 0.18s,
+          background 0.18s;
+        display: inline-flex;
         align-items: center;
-        margin-top: 48px;
+        gap: 8px;
       }
-      .about-img-wrap {
+      .btn-fill {
+        background: var(--blue);
+        color: #06070a;
+        font-weight: 500;
+      }
+      .btn-fill:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 26px rgba(76, 125, 240, 0.35);
+      }
+      .btn-line {
+        background: transparent;
+        color: var(--paper);
+        border-color: var(--line-2);
+      }
+      .btn-line:hover {
+        border-color: var(--blue);
+        color: var(--blue);
+      }
+      .hero-right {
         position: relative;
-        border-radius: 20px;
         overflow: hidden;
+        border-left: 1px solid var(--line);
       }
-      .about-img-wrap img {
+      .hero-right img {
+        position: absolute;
+        inset: 0;
         width: 100%;
-        display: block;
-        border-radius: 20px;
-        filter: brightness(0.9);
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        filter: grayscale(0.15) brightness(0.82) contrast(1.05);
       }
-      .about-img-wrap::before {
+      .hero-right::after {
         content: "";
         position: absolute;
         inset: 0;
-        border: 0.5px solid var(--cyan-border);
-        border-radius: 20px;
-        z-index: 1;
-        pointer-events: none;
+        background:
+          linear-gradient(to right, var(--ink) 0%, transparent 42%),
+          linear-gradient(to top, var(--ink) 2%, transparent 40%);
       }
-      .about-tag-img {
+      .hero-meta {
         position: absolute;
-        bottom: 20px;
-        left: 20px;
-        z-index: 2;
-        background: rgba(7, 9, 14, 0.85);
-        backdrop-filter: blur(12px);
-        border: 0.5px solid var(--cyan-border);
-        border-radius: 12px;
-        padding: 10px 16px;
+        right: 22px;
+        bottom: 24px;
+        z-index: 3;
+        text-align: right;
+        font-family: var(--f-mono);
+        font-size: 11.5px;
+        color: var(--paper-dim);
+        line-height: 1.7;
       }
-      .about-tag-img .atitle {
-        font-family: "Syne", sans-serif;
-        font-size: 13px;
-        font-weight: 700;
-        color: var(--text);
-      }
-      .about-tag-img .asub {
-        font-size: 11px;
-        color: var(--cyan);
-        margin-top: 2px;
-      }
-      .about-text p {
-        font-size: 15px;
-        line-height: 1.8;
+      .hero-meta span {
         color: var(--muted);
-        margin-bottom: 18px;
-        font-weight: 300;
       }
-      .about-text strong {
-        color: var(--text);
+
+      /* ── marquee divider ── */
+      .marquee {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: var(--ink-2);
+        overflow: hidden;
+        white-space: nowrap;
+        padding: 15px 0;
+        position: relative;
+        z-index: 2;
+      }
+      .marquee-track {
+        display: inline-flex;
+        gap: 40px;
+        animation: scroll 34s linear infinite;
+        will-change: transform;
+      }
+      .marquee span {
+        font-family: var(--f-mono);
+        font-size: 13px;
+        letter-spacing: 0.04em;
+        color: var(--muted);
+        display: inline-flex;
+        align-items: center;
+        gap: 40px;
+      }
+      .marquee span::after {
+        content: "◆";
+        color: var(--blue);
+        font-size: 8px;
+      }
+      @keyframes scroll {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* ── about ── */
+      #about {
+        background: var(--ink);
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 64px;
+        margin-top: 52px;
+        align-items: start;
+      }
+      .about-img {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--line-2);
+        position: sticky;
+        top: 96px;
+      }
+      .about-img img {
+        width: 100%;
+        display: block;
+        filter: grayscale(0.1) brightness(0.92);
+      }
+      .about-img .card {
+        position: absolute;
+        left: 16px;
+        bottom: 16px;
+        background: rgba(11, 12, 16, 0.82);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--line-2);
+        border-radius: 11px;
+        padding: 11px 15px;
+      }
+      .about-img .card .t {
+        font-family: var(--f-disp);
+        font-weight: 700;
+        font-size: 14px;
+      }
+      .about-img .card .s {
+        font-family: var(--f-mono);
+        font-size: 11.5px;
+        color: var(--blue);
+        margin-top: 3px;
+      }
+      .about-body p {
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.78;
+        margin-bottom: 18px;
+      }
+      .about-body p b {
+        color: var(--paper);
         font-weight: 500;
       }
-      .stats-row {
+      /* three principles as a mini spec list */
+      .principles {
+        margin: 30px 0 6px;
+        border-top: 1px solid var(--line);
+      }
+      .principle {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 46px 1fr;
+        gap: 16px;
+        padding: 18px 0;
+        border-bottom: 1px solid var(--line);
+        align-items: baseline;
+      }
+      .principle .k {
+        font-family: var(--f-mono);
+        font-size: 12px;
+        color: var(--amber);
+      }
+      .principle .v {
+        font-family: var(--f-disp);
+        font-weight: 600;
+        font-size: clamp(18px, 2vw, 22px);
+        letter-spacing: -0.01em;
+      }
+      .principle .v em {
+        font-style: normal;
+        color: var(--muted);
+        font-family: var(--f-body);
+        font-weight: 400;
+        font-size: 15px;
+        display: block;
+        margin-top: 4px;
+        letter-spacing: 0;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         gap: 12px;
-        margin-top: 28px;
+        margin-top: 30px;
       }
-      .scard {
-        background: rgba(255, 255, 255, 0.03);
-        border: 0.5px solid var(--cyan-border);
-        border-radius: 14px;
+      .stat {
+        border: 1px solid var(--line);
+        border-radius: 13px;
         padding: 20px 16px;
-        text-align: center;
         transition:
-          background 0.3s,
-          border-color 0.3s;
+          border-color 0.25s,
+          background 0.25s;
       }
-      .scard:hover {
-        background: rgba(0, 212, 255, 0.04);
-        border-color: var(--cyan);
+      .stat:hover {
+        border-color: var(--blue-line);
+        background: var(--blue-soft);
       }
-      .snum {
-        font-family: "Syne", sans-serif;
+      .stat .n {
+        font-family: var(--f-disp);
         font-weight: 800;
-        font-size: 32px;
-        color: var(--cyan);
+        font-size: 34px;
+        color: var(--blue);
+        line-height: 1;
       }
-      .sdesc {
+      .stat .d {
+        font-family: var(--f-mono);
         font-size: 11.5px;
         color: var(--muted);
-        margin-top: 4px;
-        letter-spacing: 0.03em;
+        margin-top: 8px;
       }
-      .int-row {
+      .outside {
+        margin-top: 26px;
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
-        margin-top: 24px;
-        padding-top: 24px;
-        border-top: 0.5px solid var(--faint);
+        align-items: center;
       }
-      .int-tag {
+      .outside .lbl {
+        font-family: var(--f-mono);
+        font-size: 11px;
+        color: var(--muted-2);
+        letter-spacing: 0.04em;
+        margin-right: 4px;
+      }
+      .chip {
+        font-family: var(--f-mono);
         font-size: 12px;
-        color: var(--muted);
-        background: rgba(255, 255, 255, 0.03);
-        border: 0.5px solid var(--faint2);
+        color: var(--paper-dim);
+        border: 1px solid var(--line-2);
         border-radius: 50px;
         padding: 5px 13px;
       }
 
-      /* PROJECTS */
-      #projects {
-        background: var(--bg2);
+      /* ── work / build log (git-diff signature) ── */
+      #work {
+        background: var(--ink-2);
       }
-      .proj-grid {
+      .worklist {
+        margin-top: 52px;
+        border-top: 1px solid var(--line);
+      }
+      .commit {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 18px;
-        margin-top: 48px;
+        grid-template-columns: 150px 1fr;
+        gap: 40px;
+        padding: 38px 0;
+        border-bottom: 1px solid var(--line);
+        transition: background 0.25s;
       }
-      .pcard {
-        background: rgba(255, 255, 255, 0.025);
-        border: 0.5px solid rgba(255, 255, 255, 0.06);
-        border-radius: 20px;
-        padding: 28px;
+      .commit:hover {
+        background: rgba(234, 231, 223, 0.014);
+      }
+      .commit-meta .hash {
+        font-family: var(--f-mono);
+        font-size: 12px;
+        color: var(--blue);
+      }
+      .commit-meta .type {
+        font-family: var(--f-mono);
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 8px;
+        line-height: 1.6;
+      }
+      .commit-meta .type b {
+        color: var(--paper-dim);
+        font-weight: 500;
+        display: block;
+      }
+      .commit-body .pname {
+        font-family: var(--f-disp);
+        font-weight: 700;
+        font-size: clamp(22px, 2.6vw, 30px);
+        letter-spacing: -0.02em;
+      }
+      /* the diff: problem (−) → build (+) */
+      .diff {
+        margin: 18px 0 16px;
+        border-left: 2px solid var(--line-2);
+        padding-left: 0;
+      }
+      .diff-row {
+        display: grid;
+        grid-template-columns: 26px 1fr;
+        align-items: start;
+        font-size: 15px;
+        line-height: 1.65;
+        padding: 7px 0 7px 14px;
+      }
+      .diff-row .g {
+        font-family: var(--f-mono);
+        font-weight: 600;
+        font-size: 15px;
+      }
+      .diff-row.minus {
+        background: linear-gradient(
+          to right,
+          var(--amber-soft),
+          transparent 70%
+        );
+      }
+      .diff-row.minus .g {
+        color: var(--amber);
+      }
+      .diff-row.minus .txt {
+        color: var(--paper-dim);
+      }
+      .diff-row.plus {
+        background: linear-gradient(
+          to right,
+          var(--blue-soft),
+          transparent 70%
+        );
+      }
+      .diff-row.plus .g {
+        color: var(--blue);
+      }
+      .diff-row.plus .txt {
+        color: var(--paper);
+      }
+      .ai-note {
         display: flex;
-        flex-direction: column;
-        gap: 13px;
-        transition:
-          border-color 0.3s,
-          transform 0.3s,
-          background 0.3s;
+        gap: 9px;
+        align-items: flex-start;
+        font-family: var(--f-mono);
+        font-size: 12.5px;
+        color: var(--muted);
+        line-height: 1.6;
+        margin-bottom: 16px;
+        max-width: 60ch;
+      }
+      .ai-note .tag {
+        color: var(--amber);
+        flex-shrink: 0;
+      }
+      .ai-note b {
+        color: var(--paper-dim);
+        font-weight: 500;
+      }
+      .stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-bottom: 16px;
+      }
+      .stack .s {
+        font-family: var(--f-mono);
+        font-size: 11.5px;
+        color: var(--muted);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 4px 9px;
+      }
+      .plnk {
+        font-family: var(--f-mono);
+        font-size: 13px;
+        color: var(--blue);
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        transition: gap 0.2s;
+      }
+      .plnk:hover {
+        gap: 11px;
+      }
+      .locked-tag {
+        font-family: var(--f-mono);
+        font-size: 12px;
+        color: var(--amber);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px dashed var(--amber-line);
+        border-radius: 8px;
+        padding: 8px 13px;
+        margin-bottom: 14px;
+      }
+
+      /* ── AI section (the requested "column") ── */
+      #ai {
+        background: var(--ink);
         position: relative;
         overflow: hidden;
       }
-      .pcard::before {
-        content: "";
+      #ai .glow {
         position: absolute;
-        top: -60px;
-        right: -60px;
-        width: 140px;
-        height: 140px;
+        top: -120px;
+        right: -80px;
+        width: 460px;
+        height: 460px;
         border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(0, 212, 255, 0.07),
-          transparent 70%
-        );
-        opacity: 0;
-        transition: opacity 0.3s;
+        background: radial-gradient(circle, var(--blue-soft), transparent 68%);
+        pointer-events: none;
       }
-      .pcard:hover::before {
-        opacity: 1;
-      }
-      .pcard:hover {
-        border-color: var(--cyan-border);
-        transform: translateY(-5px);
-        background: rgba(0, 212, 255, 0.025);
-      }
-      .pcard.locked {
-        border-style: dashed;
-        border-color: var(--faint2);
-        opacity: 0.75;
-      }
-      .pcard.locked:hover {
-        transform: none;
-        background: rgba(255, 255, 255, 0.025);
-        border-color: var(--faint2);
-      }
-      .ptype {
-        display: inline-block;
-        font-size: 11px;
-        letter-spacing: 0.1em;
-        color: var(--cyan);
-        background: var(--cyan-faint);
-        border: 0.5px solid var(--cyan-border);
-        border-radius: 50px;
-        padding: 4px 12px;
-        align-self: flex-start;
-      }
-      .ptype.lt {
+      .ai-lead {
+        margin-top: 24px;
+        max-width: 62ch;
         color: var(--muted);
-        background: rgba(255, 255, 255, 0.03);
-        border-color: var(--faint2);
+        font-size: clamp(16px, 1.6vw, 19px);
+        line-height: 1.72;
       }
-      .pname {
-        font-family: "Syne", sans-serif;
-        font-weight: 700;
-        font-size: 19px;
-        color: var(--text);
-        line-height: 1.2;
-      }
-      .pdesc {
-        font-size: 13.5px;
-        color: var(--muted);
-        line-height: 1.7;
-        flex: 1;
-        font-weight: 300;
-      }
-      .pstack {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-top: 2px;
-      }
-      .stag {
-        font-size: 11px;
-        color: var(--muted);
-        background: rgba(255, 255, 255, 0.04);
-        border: 0.5px solid var(--faint);
-        border-radius: 4px;
-        padding: 3px 8px;
-      }
-      .plnk {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 13px;
-        color: var(--cyan);
-        text-decoration: none;
-        margin-top: 4px;
-        cursor: none;
-        transition:
-          gap 0.2s,
-          background 0.2s,
-          box-shadow 0.2s;
-        border-radius: 6px;
-        padding: 3px 8px;
-        margin-left: -8px;
-      }
-      .plnk:hover {
-        gap: 10px;
-        background: rgba(0, 212, 255, 0.08);
-        box-shadow: 0 0 12px rgba(0, 212, 255, 0.12);
-      }
-      .lock-box {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        background: rgba(255, 255, 255, 0.03);
-        border: 0.5px solid var(--faint);
-        border-radius: 10px;
-        padding: 13px 14px;
-        margin-top: 6px;
-      }
-      .ldate {
-        font-size: 13px;
-        color: var(--muted);
-      }
-      .ldate strong {
-        color: var(--text);
+      .ai-lead b {
+        color: var(--paper);
         font-weight: 500;
       }
+      .ai-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 46px;
+      }
+      .ai-card {
+        border: 1px solid var(--line);
+        border-radius: 15px;
+        padding: 24px;
+        background: rgba(234, 231, 223, 0.012);
+        transition:
+          border-color 0.25s,
+          transform 0.25s;
+      }
+      .ai-card:hover {
+        border-color: var(--blue-line);
+        transform: translateY(-4px);
+      }
+      .ai-card .idx {
+        font-family: var(--f-mono);
+        font-size: 12px;
+        color: var(--blue);
+        margin-bottom: 16px;
+      }
+      .ai-card h3 {
+        font-family: var(--f-disp);
+        font-weight: 700;
+        font-size: 18px;
+        letter-spacing: -0.01em;
+        margin-bottom: 10px;
+      }
+      .ai-card p {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.66;
+      }
+      .ai-guard {
+        margin-top: 28px;
+        border: 1px solid var(--amber-line);
+        border-radius: 15px;
+        padding: 24px 26px;
+        background: var(--amber-soft);
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+      }
+      .ai-guard .mark {
+        font-family: var(--f-mono);
+        color: var(--amber);
+        font-size: 22px;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+      .ai-guard p {
+        font-size: 15.5px;
+        line-height: 1.68;
+        color: var(--paper-dim);
+      }
+      .ai-guard p b {
+        color: var(--paper);
+        font-weight: 600;
+      }
 
-      /* EDUCATION + SKILLS */
+      /* ── skills + education ── */
       #skills {
-        background: var(--bg);
+        background: var(--ink-2);
       }
       .es-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 72px;
-        margin-top: 48px;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 64px;
+        margin-top: 52px;
         align-items: start;
+      }
+      .subhead {
+        font-family: var(--f-mono);
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        text-transform: uppercase;
+        margin-bottom: 22px;
       }
       .timeline {
         display: flex;
         flex-direction: column;
       }
       .titem {
-        display: flex;
+        display: grid;
+        grid-template-columns: 18px 1fr;
         gap: 18px;
-        padding-bottom: 36px;
+        padding-bottom: 30px;
         position: relative;
       }
       .titem:not(:last-child)::before {
         content: "";
         position: absolute;
-        left: 7px;
+        left: 8px;
         top: 20px;
-        width: 1px;
         bottom: 0;
-        background: linear-gradient(to bottom, var(--faint2), transparent);
+        width: 1px;
+        background: linear-gradient(to bottom, var(--line-2), transparent);
       }
       .tdot {
         width: 16px;
         height: 16px;
         border-radius: 50%;
-        border: 1.5px solid var(--cyan);
-        background: var(--bg);
-        flex-shrink: 0;
-        margin-top: 2px;
+        border: 1.5px solid var(--muted-2);
+        background: var(--ink-2);
+        margin-top: 3px;
         position: relative;
         z-index: 1;
       }
-      .tdot.on {
-        background: var(--cyan);
-        box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+      .tdot.live {
+        border-color: var(--blue);
+        background: var(--blue);
+        box-shadow: 0 0 0 4px var(--blue-soft);
       }
       .tperiod {
-        font-size: 11px;
-        color: var(--cyan);
-        letter-spacing: 0.08em;
-        margin-bottom: 3px;
+        font-family: var(--f-mono);
+        font-size: 11.5px;
+        color: var(--amber);
+        margin-bottom: 4px;
       }
       .tdeg {
-        font-family: "Syne", sans-serif;
+        font-family: var(--f-disp);
         font-weight: 600;
-        font-size: 15px;
-        color: var(--text);
-        margin-bottom: 3px;
+        font-size: 16px;
+        letter-spacing: -0.01em;
       }
       .tschool {
-        font-size: 12.5px;
+        font-size: 13.5px;
         color: var(--muted);
+        margin-top: 3px;
+        line-height: 1.55;
+      }
+      .cert {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        margin-top: 11px;
+        padding: 6px 13px;
+        border: 1px solid var(--blue-line);
+        border-radius: 50px;
+        font-family: var(--f-mono);
+        font-size: 11.5px;
+        color: var(--blue);
+        background: var(--blue-soft);
+        transition: background 0.2s;
+      }
+      .cert:hover {
+        background: rgba(76, 125, 240, 0.2);
       }
       .sg {
-        margin-bottom: 26px;
+        margin-bottom: 24px;
       }
       .sgname {
-        font-size: 11px;
-        letter-spacing: 0.14em;
-        color: var(--muted);
-        text-transform: uppercase;
-        margin-bottom: 10px;
+        font-family: var(--f-mono);
+        font-size: 11.5px;
+        letter-spacing: 0.04em;
+        color: var(--muted-2);
+        margin-bottom: 11px;
+      }
+      .sgname::before {
+        content: "// ";
+        color: var(--blue);
       }
       .stags {
         display: flex;
         flex-wrap: wrap;
-        gap: 7px;
+        gap: 8px;
       }
       .skilltag {
+        font-family: var(--f-mono);
         font-size: 13px;
-        color: var(--text);
-        background: rgba(255, 255, 255, 0.03);
-        border: 0.5px solid var(--faint2);
+        color: var(--paper-dim);
+        border: 1px solid var(--line-2);
         border-radius: 8px;
-        padding: 7px 13px;
+        padding: 7px 12px;
         transition:
-          border-color 0.2s,
-          color 0.2s,
-          background 0.2s;
+          border-color 0.18s,
+          color 0.18s,
+          background 0.18s;
       }
       .skilltag:hover {
-        border-color: var(--cyan);
-        color: var(--cyan);
-        background: var(--cyan-faint);
+        border-color: var(--blue);
+        color: var(--blue);
+        background: var(--blue-soft);
       }
 
-      /* CONTACT */
+      /* ── contact ── */
       #contact {
-        background: var(--bg2);
-        overflow: hidden;
+        background: var(--ink);
         position: relative;
+        overflow: hidden;
       }
-      .contact-glow {
+      #contact .glow {
         position: absolute;
-        bottom: -100px;
+        bottom: -140px;
         left: 50%;
         transform: translateX(-50%);
-        width: 600px;
-        height: 300px;
-        background: radial-gradient(
-          ellipse,
-          rgba(0, 212, 255, 0.06),
-          transparent 70%
-        );
+        width: 620px;
+        height: 320px;
+        background: radial-gradient(ellipse, var(--blue-soft), transparent 68%);
         pointer-events: none;
       }
       .contact-inner {
-        max-width: 620px;
-        margin: 0 auto;
-        text-align: center;
+        max-width: 720px;
         position: relative;
         z-index: 2;
       }
       .ch {
-        font-family: "Syne", sans-serif;
+        font-family: var(--f-disp);
         font-weight: 800;
-        font-size: clamp(34px, 5vw, 62px);
-        color: var(--text);
-        letter-spacing: -0.02em;
-        line-height: 1.05;
-        margin-bottom: 14px;
+        font-size: clamp(34px, 5.4vw, 68px);
+        line-height: 1;
+        letter-spacing: -0.03em;
+        margin-bottom: 22px;
       }
       .ch em {
         font-style: normal;
-        -webkit-text-stroke: 1.5px var(--cyan);
         color: transparent;
+        -webkit-text-stroke: 1.4px var(--amber);
       }
       .csub {
-        font-size: 14.5px;
         color: var(--muted);
-        line-height: 1.75;
-        margin-bottom: 36px;
-        font-weight: 300;
+        font-size: 16px;
+        line-height: 1.72;
+        margin-bottom: 34px;
+        max-width: 54ch;
+      }
+      .csub b {
+        color: var(--amber);
+        font-weight: 500;
       }
       .clinks {
         display: flex;
-        justify-content: center;
-        gap: 12px;
+        gap: 10px;
         flex-wrap: wrap;
       }
       .clnk {
-        display: flex;
+        display: inline-flex;
         align-items: center;
-        gap: 8px;
-        border: 0.5px solid var(--faint2);
-        border-radius: 50px;
-        padding: 10px 20px;
+        gap: 9px;
+        font-family: var(--f-mono);
         font-size: 13px;
-        color: var(--muted);
-        text-decoration: none;
-        cursor: none;
-        background: rgba(255, 255, 255, 0.03);
+        color: var(--paper-dim);
+        border: 1px solid var(--line-2);
+        border-radius: 10px;
+        padding: 11px 18px;
         transition:
-          border-color 0.2s,
-          color 0.2s;
+          border-color 0.18s,
+          color 0.18s,
+          transform 0.18s;
       }
       .clnk:hover {
-        border-color: var(--cyan);
-        color: var(--cyan);
+        border-color: var(--blue);
+        color: var(--blue);
+        transform: translateY(-2px);
       }
       .clnk svg {
-        width: 14px;
-        height: 14px;
-        flex-shrink: 0;
+        width: 15px;
+        height: 15px;
       }
+
       footer {
-        padding: 36px 7vw;
-        border-top: 0.5px solid var(--faint);
+        padding: 34px var(--pad-x);
+        border-top: 1px solid var(--line);
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 12px;
         position: relative;
         z-index: 2;
+        max-width: 1320px;
+        margin: 0 auto;
       }
       footer .fn {
-        font-family: "Syne", sans-serif;
-        font-size: 13px;
+        font-family: var(--f-disp);
         font-weight: 700;
-        color: var(--text);
-        letter-spacing: 0.06em;
+        font-size: 14px;
+        letter-spacing: 0.02em;
       }
       footer p {
-        font-size: 11.5px;
+        font-family: var(--f-mono);
+        font-size: 12px;
         color: var(--muted);
-        letter-spacing: 0.04em;
-      }
-      .highlight {
-        color: #e1d9d1;
       }
 
-      /* ANIMATIONS */
-      @keyframes up {
+      /* ── reveal ── */
+      @keyframes rise {
         from {
           opacity: 0;
-          transform: translateY(24px);
+          transform: translateY(22px);
         }
         to {
           opacity: 1;
@@ -830,7 +1069,7 @@
       }
       .rev {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(26px);
         transition:
           opacity 0.7s ease,
           transform 0.7s ease;
@@ -840,694 +1079,635 @@
         transform: translateY(0);
       }
 
-      /* LABEL */
-      .slabel {
-        font-size: 11px;
-        letter-spacing: 0.2em;
-        color: var(--cyan);
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 14px;
-      }
-      .slabel::before {
-        content: "";
-        width: 22px;
-        height: 1px;
-        background: var(--cyan);
-      }
-      h2.stitle {
-        font-family: "Syne", sans-serif;
-        font-weight: 700;
-        font-size: clamp(30px, 4vw, 46px);
-        color: var(--text);
-        letter-spacing: -0.02em;
-        line-height: 1.1;
-      }
-
-      /* HAMBURGER MENU */
-      .ham-btn {
+      /* ── hamburger + mobile menu ── */
+      .ham {
         display: none;
         flex-direction: column;
         justify-content: center;
         gap: 5px;
-        width: 36px;
-        height: 36px;
+        width: 38px;
+        height: 38px;
         background: none;
-        border: 0.5px solid var(--faint2);
-        border-radius: 8px;
-        padding: 8px;
-        cursor: none;
+        border: 1px solid var(--line-2);
+        border-radius: 9px;
+        padding: 9px;
+        cursor: pointer;
         z-index: 301;
-        transition: border-color 0.2s;
-        flex-shrink: 0;
       }
-      .ham-btn:hover {
-        border-color: var(--cyan);
-      }
-      .ham-btn span {
+      .ham span {
         display: block;
         width: 100%;
-        height: 1.5px;
-        background: var(--text);
+        height: 1.6px;
+        background: var(--paper);
         border-radius: 2px;
         transition:
-          transform 0.3s ease,
-          opacity 0.3s ease;
-        transform-origin: center;
+          transform 0.3s,
+          opacity 0.3s;
       }
-      .ham-btn.open span:nth-child(1) {
-        transform: translateY(6.5px) rotate(45deg);
-        background: var(--cyan);
+      .ham.open span:nth-child(1) {
+        transform: translateY(6.6px) rotate(45deg);
+        background: var(--blue);
       }
-      .ham-btn.open span:nth-child(2) {
+      .ham.open span:nth-child(2) {
         opacity: 0;
       }
-      .ham-btn.open span:nth-child(3) {
-        transform: translateY(-6.5px) rotate(-45deg);
-        background: var(--cyan);
+      .ham.open span:nth-child(3) {
+        transform: translateY(-6.6px) rotate(-45deg);
+        background: var(--blue);
       }
-      .mob-menu {
+      .mobmenu {
         display: none;
         position: fixed;
         inset: 0;
         z-index: 299;
-        background: rgba(7, 9, 14, 0.97);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
+        background: rgba(11, 12, 16, 0.98);
+        backdrop-filter: blur(22px);
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 12px;
+        gap: 6px;
         opacity: 0;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.3s;
       }
-      .mob-menu.open {
+      .mobmenu.open {
         opacity: 1;
       }
-      .mob-menu a {
-        font-family: "Syne", sans-serif;
+      .mobmenu a {
+        font-family: var(--f-disp);
         font-weight: 700;
-        font-size: clamp(28px, 8vw, 42px);
+        font-size: clamp(30px, 9vw, 46px);
         color: var(--muted);
-        text-decoration: none;
         letter-spacing: -0.02em;
-        transition:
-          color 0.2s,
-          transform 0.2s;
-        transform: translateY(20px);
-        opacity: 0;
-        transition:
-          color 0.2s,
-          transform 0.4s ease,
-          opacity 0.4s ease;
+        padding: 8px;
+        transition: color 0.2s;
       }
-      .mob-menu.open a {
-        transform: translateY(0);
-        opacity: 1;
+      .mobmenu a:hover,
+      .mobmenu a:active {
+        color: var(--blue);
       }
-      .mob-menu.open a:nth-child(1) {
-        transition-delay: 0.05s;
-      }
-      .mob-menu.open a:nth-child(2) {
-        transition-delay: 0.1s;
-      }
-      .mob-menu.open a:nth-child(3) {
-        transition-delay: 0.15s;
-      }
-      .mob-menu.open a:nth-child(4) {
-        transition-delay: 0.2s;
-      }
-      .mob-menu a:hover {
-        color: var(--cyan);
-      }
-      .mob-menu-footer {
+      .mobmenu .foot {
         position: absolute;
-        bottom: 36px;
+        bottom: 40px;
+        font-family: var(--f-mono);
         font-size: 12px;
-        color: var(--faint2);
-        letter-spacing: 0.1em;
+        color: var(--muted-2);
       }
 
-      /* RESPONSIVE */
-      @media (max-width: 1100px) {
-        .proj-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-        .about-grid {
-          gap: 40px;
-        }
-        .es-grid {
-          gap: 40px;
-        }
-      }
-      @media (max-width: 900px) {
+      /* ── responsive ── */
+      @media (max-width: 1000px) {
         #hero {
           grid-template-columns: 1fr;
-          position: relative;
-          min-height: 100vh;
         }
         .hero-right {
-          display: block;
-          position: absolute;
-          inset: 0;
-          height: 100%;
-          z-index: 1;
-        }
-        .hero-right img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center top;
-          filter: brightness(0.3) contrast(1.05);
-        }
-        .hero-right::after {
-          background: linear-gradient(to top, var(--bg) 0%, transparent 60%);
+          display: none;
         }
         .hero-left {
+          padding-top: 140px;
+        }
+        .about-grid,
+        .es-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .about-img {
           position: relative;
-          z-index: 3;
-          padding: 130px 7vw 80px;
+          top: 0;
+          max-width: 360px;
         }
-        .about-grid {
-          grid-template-columns: 1fr;
-        }
-        .about-img-wrap {
-          max-width: 460px;
-          margin: 0 auto;
-        }
-        .proj-grid {
+        .ai-grid {
           grid-template-columns: 1fr 1fr;
         }
-        .es-grid {
+        .commit {
           grid-template-columns: 1fr;
+          gap: 14px;
         }
-        nav {
-          gap: 18px;
-          padding: 10px 22px;
-        }
-        nav a {
-          font-size: 12px;
-        }
-        .wrap {
-          padding: 90px 6vw;
-        }
-        .stats-row {
-          grid-template-columns: 1fr 1fr 1fr;
-        }
-      }
-      @media (max-width: 640px) {
-        .scroll-cue {
-          display: none;
-        }
-        .ham-btn {
+        .commit-meta {
           display: flex;
-        }
-        nav .logo {
-          display: block;
-        }
-        nav {
-          gap: 0;
-          padding: 8px 12px 8px 20px;
-          top: 12px;
-          justify-content: space-between;
-          width: calc(100% - 32px);
-          left: 16px;
-          transform: none;
-          border-radius: 16px;
-        }
-        nav a {
-          display: none;
-        }
-        .hero-left {
-          padding: 110px 5vw 70px;
-        }
-        h1.hname {
-          font-size: clamp(40px, 12vw, 62px);
-        }
-        .hsub {
-          font-size: 14px;
-          max-width: 100%;
-        }
-        .hpills {
-          gap: 6px;
-        }
-        .hpill {
-          font-size: 11px;
-          padding: 5px 12px;
-        }
-        .hbtns {
-          flex-direction: column;
-          gap: 10px;
-        }
-        .btn-p,
-        .btn-o {
-          width: 100%;
-          text-align: center;
-          padding: 13px 20px;
-        }
-        .wrap {
-          padding: 70px 5vw;
-        }
-        h2.stitle {
-          font-size: clamp(26px, 7vw, 38px);
-        }
-        .about-grid {
-          gap: 32px;
-        }
-        .about-img-wrap {
-          max-width: 100%;
-        }
-        .stats-row {
-          grid-template-columns: 1fr 1fr;
-          gap: 10px;
-        }
-        .scard:last-child {
-          grid-column: 1 / -1;
-        }
-        .proj-grid {
-          grid-template-columns: 1fr;
-        }
-        .pcard {
-          padding: 22px;
-        }
-        .es-grid {
-          gap: 48px;
-        }
-        .clinks {
-          flex-direction: column;
+          gap: 16px;
           align-items: center;
         }
-        .clnk {
-          width: 100%;
-          max-width: 280px;
+        .commit-meta .type {
+          margin-top: 0;
+        }
+      }
+      @media (max-width: 760px) {
+        :root {
+          --pad-x: 5vw;
+        }
+        nav {
+          width: calc(100% - 24px);
+          left: 12px;
+          transform: none;
+          justify-content: space-between;
+          padding: 9px 9px 9px 16px;
+        }
+        nav .links {
+          display: none;
+        }
+        .ham {
+          display: flex;
+        }
+        .wrap {
+          padding: 74px var(--pad-x);
+        }
+        .ai-grid {
+          grid-template-columns: 1fr;
+        }
+        .stats {
+          grid-template-columns: 1fr 1fr;
+        }
+        .stat:last-child {
+          grid-column: 1 / -1;
+        }
+        .hbtns .btn {
+          flex: 1;
           justify-content: center;
         }
-        .ch {
-          font-size: clamp(30px, 8vw, 48px);
+        .clnk {
+          flex: 1;
+          justify-content: center;
         }
         footer {
           flex-direction: column;
-          gap: 8px;
           text-align: center;
-          padding: 28px 5vw;
         }
-      }
-      @media (max-width: 400px) {
-        nav {
-          gap: 10px;
-          padding: 9px 14px;
-        }
-        nav a {
-          font-size: 10.5px;
-        }
-        h1.hname {
-          font-size: clamp(34px, 13vw, 50px);
-        }
-        .badge {
-          font-size: 10.5px;
-          padding: 5px 13px;
-        }
-        .stats-row {
-          grid-template-columns: 1fr 1fr;
-        }
-        .pname {
-          font-size: 17px;
-        }
-        .wrap {
-          padding: 60px 4vw;
-        }
-        .about-tag-img {
-          bottom: 12px;
-          left: 12px;
-          padding: 8px 12px;
-        }
-        .about-tag-img .atitle {
-          font-size: 12px;
-        }
-        .about-tag-img .asub {
-          font-size: 10px;
-        }
-      }
-      /* Add this */
-      @media (hover: none) and (pointer: coarse) {
-        #cur {
+        .hero-left::before,
+        .hero-left::after {
           display: none;
         }
-        body {
-          cursor: auto;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+          scroll-behavior: auto !important;
+        }
+        .rev {
+          opacity: 1;
+          transform: none;
+        }
+        .marquee-track {
+          animation: none;
         }
       }
     </style>
   </head>
   <body>
-    <div class="noise"></div>
-    <div id="cur">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M4 2L20 12L12 13.5L8 20L4 2Z"
-          fill="#00D4FF"
-          stroke="#00D4FF"
-          stroke-width="0.5"
-          stroke-linejoin="round"
-        />
-      </svg>
-    </div>
-    <div id="cur-dot"></div>
-    <div id="cur-ring"></div>
+    <div class="grain"></div>
 
     <!-- NAV -->
     <nav>
-      <!-- TO -->
-      <a href="#hero" class="logo" style="text-decoration: none">HP</a>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-      <button class="ham-btn" id="hamBtn" aria-label="Menu">
+      <a href="#hero" class="logo">HP</a>
+      <div class="links">
+        <a href="#about">about</a>
+        <a href="#work">work</a>
+        <a href="#ai">ai</a>
+        <a href="#skills">skills</a>
+        <a href="#contact">contact</a>
+      </div>
+      <button class="ham" id="ham" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
     </nav>
 
     <!-- MOBILE MENU -->
-    <div class="mob-menu" id="mobMenu">
-      <a href="#about" onclick="closeMenu()">About</a>
-      <a href="#projects" onclick="closeMenu()">Projects</a>
-      <a href="#skills" onclick="closeMenu()">Skills</a>
-      <a href="#contact" onclick="closeMenu()">Contact</a>
-      <div class="mob-menu-footer">HARISHPRANAV R</div>
+    <div class="mobmenu" id="mobmenu">
+      <a href="#about" data-close>about</a>
+      <a href="#work" data-close>work</a>
+      <a href="#ai" data-close>ai</a>
+      <a href="#skills" data-close>skills</a>
+      <a href="#contact" data-close>contact</a>
+      <div class="foot">HARISHPRANAV&nbsp;R</div>
     </div>
 
     <!-- HERO -->
     <section id="hero">
-      <div class="hero-glow"></div>
       <div class="hero-left">
-        <div class="badge">
-          <span class="badge-dot"></span>Full Stack Developer · Tamil Nadu
+        <div class="status">
+          <span class="live"></span> open to build · Tamil Nadu, IN
         </div>
-        <h1 class="hname">
-          HARISH
-          <span class="outline">PRANAV</span>
-        </h1>
+        <h1 class="hname">HARISH<span class="stroke">PRANAV</span></h1>
+        <div class="htag">// full-stack developer</div>
         <p class="hsub">
-          I find the cracks in the real world — then build full-stack products
-          that fill them. Problem-first. User-obsessed. Always simplifying.
+          I treat <b>"that's just how it is"</b> as a bug report. I hunt the
+          cracks in everyday software, then ship the full-stack fix — clean,
+          fast, and built for people who just want the thing to work.
         </p>
-        <div class="hpills">
-          <div class="hpill">Problem Discovery</div>
-          <div class="hpill">Gap Bridging</div>
-          <div class="hpill">Creator Platforms</div>
-          <div class="hpill">EdTech Solutions</div>
-          <div class="hpill">Full-Stack Engineering</div>
-        </div>
         <div class="hbtns">
-          <button
-            class="btn-p"
-            onclick="
-              document
-                .getElementById('projects')
-                .scrollIntoView({ behavior: 'smooth' })
-            "
-          >
-            View Projects
+          <button class="btn btn-fill" data-scroll="work">
+            See the work →
           </button>
-          <button
-            class="btn-o"
-            onclick="
-              document
-                .getElementById('contact')
-                .scrollIntoView({ behavior: 'smooth' })
-            "
-          >
-            Let's Talk
-          </button>
+          <button class="btn btn-line" data-scroll="contact">Let's talk</button>
         </div>
       </div>
       <div class="hero-right">
         <img src="images/Portfolio2.png" alt="Harishpranav R" />
-      </div>
-      <div class="scroll-cue">
-        <span>SCROLL</span>
-        <div class="scroll-line"></div>
+        <div class="hero-meta">
+          Harishpranav R<br />
+          <span>problem-first · AI-native · ships fast</span>
+        </div>
       </div>
     </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span
+          >Problem Discovery Creator Tools EdTech AI-Native Builds Full-Stack
+          Engineering Ship Fast Kill Complexity Problem Discovery Creator Tools
+          EdTech AI-Native Builds Full-Stack Engineering Ship Fast Kill
+          Complexity</span
+        >
+      </div>
+    </div>
 
     <!-- ABOUT -->
     <section id="about">
       <div class="wrap">
-        <div class="slabel">About Me</div>
-        <h2 class="stitle rev">I build what<br />the world is missing.</h2>
+        <div class="eyebrow"><span class="amb">//</span> about</div>
+        <h2 class="stitle rev">
+          I build what the<br />world keeps working around.
+        </h2>
         <div class="about-grid">
-          <div class="about-img-wrap rev">
+          <div class="about-img rev">
             <img src="images/Portfolio.png" alt="Harishpranav R" />
-            <div class="about-tag-img">
-              <div class="atitle">Harishpranav R</div>
-              <div class="asub">Full Stack Developer</div>
+            <div class="card">
+              <div class="t">Harishpranav R</div>
+              <div class="s">full-stack developer</div>
             </div>
           </div>
-          <div class="about-text rev">
+          <div class="about-body rev">
             <p>
-              I'm <strong>Harishpranav R</strong> ,a full-stack developer from
-              Tamil Nadu driven by one thing—finding problems others ignore and
-              building products that solve them better, faster, and cleaner. I
-              focus on execution, scalability, and creating solutions that
-              actually matter.
+              I'm a full-stack developer from Tamil Nadu, running on one
+              obsession: spotting the problems everyone else has learned to
+              tolerate — then building the product that actually solves them.
+              <b>Better, faster, cleaner.</b>
             </p>
             <p>
-              My work follows <strong>three core principles</strong>: find
-              real-world pain points, fill the gaps that existing platforms
-              ignore, and strip away complexity so users
-              <strong>just get things done.</strong>
+              I'm self-taught, currently doing my CS degree, and most of what I
+              know came from shipping real things and breaking them until they
+              held. I care about execution over talk, and about software that
+              respects the person on the other side of the screen.
             </p>
             <p>
-              I'm deeply interested in the <strong>creator economy</strong> —
-              building tools that help Instagram and YouTube creators simplify
-              everything from ideation to publishing. I believe the next wave of
-              useful software lives at the intersection of
-              <strong>entertainment and utility.</strong>
+              Right now I'm deep in the <b>creator economy</b> — tools that take
+              Instagram and YouTube creators from messy idea to published work
+              without the busywork. I think the next wave of software that
+              matters lives where <b>utility meets everyday life.</b>
             </p>
-            <p>
-              Outside the screen, you'll find me
-              <strong>on the cricket field</strong> or deep in a game — because
-              the best products, like the best sport, demand both strategy and
-              instinct.
-            </p>
-            <div class="stats-row">
-              <div class="scard">
-                <div class="snum">3</div>
-                <div class="sdesc">Projects Built</div>
-              </div>
-              <div class="scard">
-                <div class="snum">2</div>
-                <div class="sdesc">Dropping Jun '26</div>
-              </div>
-              <div class="scard">
-                <div class="snum">∞</div>
-                <div class="sdesc">Problems to Solve</div>
-              </div>
-            </div>
-            <div style="margin-top: 24px; padding-top: 24px">
-              <div
-                style="
-                  font-size: 11px;
-                  letter-spacing: 0.12em;
-                  color: #7a8fa6;
-                  text-transform: uppercase;
-                  margin: 14px 0 10px;
-                "
-              >
-                Outside Code
-              </div>
-              <div class="int-row" style="margin-top: 0">
-                <span class="int-tag">Cricket</span>
-                <span class="int-tag">Video Games</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-      <div class="wrap">
-        <div class="slabel">Work</div>
-        <h2 class="stitle rev">Projects that solve<br />real problems.</h2>
-        <div class="proj-grid">
-          <div class="pcard rev">
-            <span class="ptype">Mobile App · Productivity</span>
-            <div class="pname">ChargeGuard</div>
-            <p class="pdesc">
-              ChargeGuard keeps an eye on your phone even when it’s plugged in.
-              If your charger stops delivering power—due to a loose cable,
-              faulty adapter, or power cut—it detects it instantly. Instead of
-              silently draining, you get alerted right away. Stay informed and
-              keep your device powered without surprises.
-            </p>
-            <div class="pstack">
-              <span class="stag">Kotlin</span>
-              <span class="stag">BroadcastReceiver (dynamic)</span>
-              <span class="stag">Material Design</span>
-            </div>
-            <a
-              class="plnk"
-              href="https://github.com/harishpranav-dev/chargeguard"
-              target="_blank"
-              >View on GitHub →</a
-            >
-          </div>
-          <div class="pcard rev">
-            <span class="ptype">Web App - AI Agent</span>
-            <div class="pname">General-Agent</div>
-            <p class="pdesc">
-              General-Agent is a full stack web application that demonstrates
-              autonomous AI agents collaborating to solve complex tasks. It
-              features a multi-agent system where Planner, Researcher, and
-              Writer agents work together to break down goals, gather real-time
-              information, and generate structured outputs. The platform
-              includes a live agent thinking visualizer, task history tracking,
-              and PDF export functionality, providing both practical utility and
-              educational insight into how modern AI agent systems operate.
-            </p>
-            <div class="pstack">
-              <span class="stag">React + Node.js</span>
-              <span class="stag">FastAPI[Python]</span>
-              <span class="stag">API : Claude,Tavily</span>
-            </div>
-            <a
-              class="plnk"
-              href="https://ai-agent-tau-gilt.vercel.app/"
-              target="_blank"
-              >Visit the project page →</a
-            >
-          </div>
-
-          <div class="pcard locked rev">
-            <span class="ptype lt">Web App · Career Platform</span>
-            <div class="pname">CareerCraftAI</div>
-            <p class="pdesc">
-              One platform for students, freshers & employers to grow their
-              careers. Something big is coming — the idea stays locked for now.
-            </p>
-            <div class="lock-box">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#7A8FA6"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <rect x="3" y="11" width="18" height="11" rx="2" />
-                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-              </svg>
-              <span class="ldate">Coming <strong>June 2026</strong></span>
-            </div>
-            <a class="plnk" href="https://careercraftai.in" target="_blank"
-              >Visit careercraftai.in →</a
-            >
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EDUCATION + SKILLS -->
-    <section id="skills">
-      <div class="wrap">
-        <div class="slabel">Education & Skills</div>
-        <h2 class="stitle rev">Foundation &<br />arsenal.</h2>
-        <div class="es-grid">
-          <div class="timeline rev">
-            <div class="titem">
-              <div class="tdot on"></div>
-              <div>
-                <div class="tperiod">2024 — 2027</div>
-                <div class="tdeg">B.Sc Computer Science</div>
-                <div class="tschool">
-                  Currently pursuing · GRD college of science, Coimbatore
+            <div class="principles">
+              <div class="principle">
+                <div class="k">01</div>
+                <div class="v">
+                  Find the pain
+                  <em>Look where people sigh and say "ugh, again."</em>
+                </div>
+              </div>
+              <div class="principle">
+                <div class="k">02</div>
+                <div class="v">
+                  Fill the gap
+                  <em>Build the thing existing tools quietly ignore.</em>
+                </div>
+              </div>
+              <div class="principle">
+                <div class="k">03</div>
+                <div class="v">
+                  Kill the complexity
+                  <em>Strip it back until it just gets out of the way.</em>
                 </div>
               </div>
             </div>
-            <div class="titem">
-              <div class="tdot"></div>
-              <div>
-                <div class="tperiod">Self-taught · Completed</div>
-                <div class="tdeg">Full Stack Development</div>
-                <div class="tschool">Building projects · Online resources</div>
-                <a
-                  href="https://www.linkedin.com/posts/harishpranav-r-209723308_hi-im-harish-pranav-a-college-student-share-7430966311964553216-u4Zl?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE5qy2kBPuqrDC7xFqbj4Qff4IpzrZQbeco"
-                  target="_blank"
-                  style="
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 6px;
-                    margin-top: 10px;
-                    padding: 6px 14px;
-                    border: 0.5px solid rgba(0, 212, 255, 0.3);
-                    border-radius: 50px;
-                    font-size: 11.5px;
-                    color: #00d4ff;
-                    text-decoration: none;
-                    background: rgba(0, 212, 255, 0.06);
-                    letter-spacing: 0.04em;
-                    transition:
-                      background 0.2s,
-                      border-color 0.2s;
-                  "
-                  onmouseover="
-                    this.style.background = 'rgba(0,212,255,.12)';
-                    this.style.borderColor = '#00D4FF';
-                  "
-                  onmouseout="
-                    this.style.background = 'rgba(0,212,255,.06)';
-                    this.style.borderColor = 'rgba(0,212,255,.3)';
-                  "
-                >
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+
+            <div class="stats">
+              <div class="stat">
+                <div class="n">3</div>
+                <div class="d">projects shipped</div>
+              </div>
+              <div class="stat">
+                <div class="n">2</div>
+                <div class="d">launching Jun '26</div>
+              </div>
+              <div class="stat">
+                <div class="n">∞</div>
+                <div class="d">problems to solve</div>
+              </div>
+            </div>
+
+            <div class="outside">
+              <span class="lbl">off the keyboard:</span>
+              <span class="chip">Cricket</span>
+              <span class="chip">Video Games</span>
+              <span class="chip">Strategy + instinct</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work">
+      <div class="wrap">
+        <div class="eyebrow"><b>//</b> work</div>
+        <h2 class="stitle rev">
+          Every project is a crack<br />I decided to fill.
+        </h2>
+        <div class="worklist">
+          <!-- CareerCraftAI -->
+          <div class="commit rev">
+            <div class="commit-meta">
+              <div class="hash">#001</div>
+              <div class="type">
+                <b>Web platform</b>
+                careers
+              </div>
+            </div>
+            <div class="commit-body">
+              <div class="pname">CareerCraftAI</div>
+              <div class="diff">
+                <div class="diff-row minus">
+                  <span class="g">−</span>
+                  <span class="txt"
+                    >Students and freshers are stuck guessing — scattered
+                    advice, no clear path from "I have a degree" to "I have a
+                    job."</span
                   >
-                    <path
-                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                    />
-                    <polyline points="14 2 14 8 20 8" />
-                    <line x1="16" y1="13" x2="8" y2="13" />
-                    <line x1="16" y1="17" x2="8" y2="17" />
-                    <polyline points="10 9 9 9 8 9" />
-                  </svg>
-                  View Certificate
-                </a>
+                </div>
+                <div class="diff-row plus">
+                  <span class="g">+</span>
+                  <span class="txt"
+                    >One platform where students, freshers, and employers meet
+                    and grow careers. The full picture stays under wraps — for
+                    now.</span
+                  >
+                </div>
+              </div>
+              <div class="locked-tag">Successfully in the production</div>
+              <div class="stack">
+                <span class="s">Next.js</span>
+                <span class="s">Vercel</span>
+                <span class="s">AI-native</span>
+              </div>
+              <a
+                class="plnk"
+                href="https://careercraftai.in"
+                target="_blank"
+                rel="noopener"
+                >careercraftai.in →</a
+              >
+            </div>
+          </div>
+          <!-- ChargeGuard -->
+          <div class="commit rev">
+            <div class="commit-meta">
+              <div class="hash">#002</div>
+              <div class="type">
+                <b>Android app</b>
+                productivity
               </div>
             </div>
-            <div class="titem">
-              <div class="tdot"></div>
-              <div>
-                <div class="tperiod">Completed</div>
-                <div class="tdeg">Higher Secondary (12th)</div>
-                <div class="tschool">Bio-Maths. Trinity Academy - Namakkal</div>
+            <div class="commit-body">
+              <div class="pname">ChargeGuard</div>
+              <div class="diff">
+                <div class="diff-row minus">
+                  <span class="g">−</span>
+                  <span class="txt"
+                    >Your phone quietly stops charging — loose cable, dodgy
+                    adapter, power cut — and you only notice when it's
+                    dead.</span
+                  >
+                </div>
+                <div class="diff-row plus">
+                  <span class="g">+</span>
+                  <span class="txt"
+                    >An Android app that watches the power line in real time and
+                    alerts you the instant charging drops. No surprises, no dead
+                    battery.</span
+                  >
+                </div>
+              </div>
+              <div class="ai-note">
+                <span class="tag">AI ▸</span>
+                <span
+                  >Used AI to
+                  <b>map out Android's BroadcastReceiver edge cases</b> and
+                  battery-event quirks fast — then hand-tuned the detection
+                  logic myself.</span
+                >
+              </div>
+              <div class="stack">
+                <span class="s">Kotlin</span>
+                <span class="s">BroadcastReceiver</span>
+                <span class="s">Material Design</span>
+              </div>
+              <a
+                class="plnk"
+                href="https://github.com/harishpranav-dev/chargeguard"
+                target="_blank"
+                rel="noopener"
+                >View on GitHub →</a
+              >
+            </div>
+          </div>
+
+          <!-- General-Agent -->
+          <div class="commit rev">
+            <div class="commit-meta">
+              <div class="hash">#003</div>
+              <div class="type">
+                <b>Web app</b>
+                AI agents
               </div>
             </div>
-            <div class="titem">
-              <div class="tdot"></div>
-              <div>
-                <div class="tperiod">Completed</div>
-                <div class="tdeg">Schooling (10th)</div>
-                <div class="tschool">Trinity Academy - Namakkal</div>
+            <div class="commit-body">
+              <div class="pname">General-Agent</div>
+              <div class="diff">
+                <div class="diff-row minus">
+                  <span class="g">−</span>
+                  <span class="txt"
+                    >How multi-agent AI systems actually think and hand off work
+                    is a black box — you get an answer, never the
+                    reasoning.</span
+                  >
+                </div>
+                <div class="diff-row plus">
+                  <span class="g">+</span>
+                  <span class="txt"
+                    >A full-stack app where Planner, Researcher, and Writer
+                    agents collaborate live — with a real-time thinking
+                    visualizer, task history, and PDF export.</span
+                  >
+                </div>
+              </div>
+              <div class="ai-note">
+                <span class="tag">AI ▸</span>
+                <span
+                  >Claude powers the agents; I also
+                  <b>co-designed the orchestration</b> with it — stress-testing
+                  the prompt flow and failure modes before writing the
+                  glue.</span
+                >
+              </div>
+              <div class="stack">
+                <span class="s">React</span>
+                <span class="s">Node.js</span>
+                <span class="s">FastAPI · Python</span>
+                <span class="s">Claude API</span>
+                <span class="s">Tavily</span>
+              </div>
+              <a
+                class="plnk"
+                href="https://ai-agent-tau-gilt.vercel.app/"
+                target="_blank"
+                rel="noopener"
+                >Visit the live demo →</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI WORKFLOW (the new "column") -->
+    <section id="ai">
+      <div class="glow"></div>
+      <div class="wrap">
+        <div class="eyebrow"><b>//</b> how i build with ai</div>
+        <h2 class="stitle rev">AI is my pair,<br />not my autopilot.</h2>
+        <p class="ai-lead rev">
+          AI didn't replace the engineering — it
+          <b>compressed the boring parts</b> so I can spend real time on what
+          actually matters: the problem, the UX, and the edge cases nobody
+          thinks about. Here's where it sits in my full-stack flow.
+        </p>
+
+        <div class="ai-grid">
+          <div class="ai-card rev">
+            <div class="idx">01</div>
+            <h3>Ideation &amp; specs</h3>
+            <p>
+              I pressure-test the problem out loud, poke holes in my own scope,
+              and draft tight specs — so I'm building the right thing before I
+              write a line.
+            </p>
+          </div>
+          <div class="ai-card rev">
+            <div class="idx">02</div>
+            <h3>Frontend</h3>
+            <p>
+              Scaffold components fast, then refactor by hand. AI's real value
+              here is catching accessibility and responsive edge cases I'd
+              otherwise miss at 2am.
+            </p>
+          </div>
+          <div class="ai-card rev">
+            <div class="idx">03</div>
+            <h3>Backend &amp; APIs</h3>
+            <p>
+              Draft route handlers, gut-check error handling, and generate test
+              payloads — then I own the logic that actually touches user data.
+            </p>
+          </div>
+          <div class="ai-card rev">
+            <div class="idx">04</div>
+            <h3>Database</h3>
+            <p>
+              Model schemas, sanity-check Prisma migrations, and rewrite the
+              queries that are quietly doing too much before they hit prod.
+            </p>
+          </div>
+          <div class="ai-card rev">
+            <div class="idx">05</div>
+            <h3>Debugging</h3>
+            <p>
+              Paste the stack trace, get three hypotheses in seconds, then
+              verify each one myself. Faster loops, same standard of proof.
+            </p>
+          </div>
+          <div class="ai-card rev">
+            <div class="idx">06</div>
+            <h3>Learning</h3>
+            <p>
+              New library, new pattern, new "why is this like this?" — AI is the
+              fastest tutor I've had. Being self-taught, that's the multiplier.
+            </p>
+          </div>
+        </div>
+
+        <div class="ai-guard rev">
+          <span class="mark">!</span>
+          <p>
+            <b>I read every line before it ships.</b> AI accelerates me — it
+            doesn't get to be careless for me. The judgment, the taste, and the
+            "does this actually help the user" call stay mine.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS + EDUCATION -->
+    <section id="skills">
+      <div class="wrap">
+        <div class="eyebrow"><b>//</b> skills &amp; education</div>
+        <h2 class="stitle rev">Foundation &amp; arsenal.</h2>
+        <div class="es-grid">
+          <div class="rev">
+            <div class="subhead">The path</div>
+            <div class="timeline">
+              <div class="titem">
+                <div class="tdot live"></div>
+                <div>
+                  <div class="tperiod">2024 — 2027 · in progress</div>
+                  <div class="tdeg">B.Sc Computer Science</div>
+                  <div class="tschool">GRD College of Science, Coimbatore</div>
+                </div>
+              </div>
+              <div class="titem">
+                <div class="tdot"></div>
+                <div>
+                  <div class="tperiod">self-taught · ongoing</div>
+                  <div class="tdeg">Full-Stack Development</div>
+                  <div class="tschool">
+                    Built by shipping projects &amp; breaking things
+                  </div>
+                  <a
+                    class="cert"
+                    href="https://www.linkedin.com/posts/harishpranav-r-209723308_hi-im-harish-pranav-a-college-student-share-7430966311964553216-u4Zl?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE5qy2kBPuqrDC7xFqbj4Qff4IpzrZQbeco"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    ▸ View proof of work
+                  </a>
+                </div>
+              </div>
+              <div class="titem">
+                <div class="tdot"></div>
+                <div>
+                  <div class="tperiod">completed</div>
+                  <div class="tdeg">Higher Secondary · Bio-Maths</div>
+                  <div class="tschool">Trinity Academy, Namakkal</div>
+                </div>
+              </div>
+              <div class="titem">
+                <div class="tdot"></div>
+                <div>
+                  <div class="tperiod">completed</div>
+                  <div class="tdeg">Schooling · 10th</div>
+                  <div class="tschool">Trinity Academy, Namakkal</div>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="rev">
+            <div class="subhead">The arsenal</div>
             <div class="sg">
-              <div class="sgname">Frontend</div>
+              <div class="sgname">frontend</div>
               <div class="stags">
                 <span class="skilltag">React</span>
                 <span class="skilltag">Next.js</span>
@@ -1538,7 +1718,7 @@
               </div>
             </div>
             <div class="sg">
-              <div class="sgname">Backend</div>
+              <div class="sgname">backend</div>
               <div class="stags">
                 <span class="skilltag">Node.js</span>
                 <span class="skilltag">Express</span>
@@ -1547,7 +1727,7 @@
               </div>
             </div>
             <div class="sg">
-              <div class="sgname">Database</div>
+              <div class="sgname">database</div>
               <div class="stags">
                 <span class="skilltag">PostgreSQL</span>
                 <span class="skilltag">MongoDB</span>
@@ -1556,7 +1736,7 @@
               </div>
             </div>
             <div class="sg">
-              <div class="sgname">Tools</div>
+              <div class="sgname">tools</div>
               <div class="stags">
                 <span class="skilltag">Git</span>
                 <span class="skilltag">VS Code</span>
@@ -1565,7 +1745,7 @@
               </div>
             </div>
             <div class="sg">
-              <div class="sgname">AI Tools</div>
+              <div class="sgname">ai in the loop</div>
               <div class="stags">
                 <span class="skilltag">Claude</span>
                 <span class="skilltag">ChatGPT</span>
@@ -1579,18 +1759,15 @@
 
     <!-- CONTACT -->
     <section id="contact">
+      <div class="glow"></div>
       <div class="wrap">
-        <div class="slabel">Contact</div>
+        <div class="eyebrow"><span class="amb">//</span> contact</div>
         <div class="contact-inner">
-          <div class="contact-glow"></div>
           <h2 class="ch rev">Let's build<br />something <em>real.</em></h2>
           <p class="csub rev">
-            Got a problem to solve or an idea worth building? I’m open to
-            collaborations, freelance projects, and conversations that turn into
-            execution.
-            <strong class="highlight"
-              >You can also contact me for cricket too!</strong
-            >
+            Got a problem worth solving or an idea worth shipping? I'm open to
+            collaborations, freelance builds, and conversations that turn into
+            actual code. <b>And yeah — hit me up for cricket too.</b>
           </p>
           <div class="clinks rev">
             <a class="clnk" href="mailto:harishpranav.work@gmail.com">
@@ -1598,7 +1775,7 @@
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="1.5"
+                stroke-width="1.6"
                 stroke-linecap="round"
                 stroke-linejoin="round"
               >
@@ -1613,12 +1790,13 @@
               class="clnk"
               href="https://www.linkedin.com/in/harishpranav-r-209723308/"
               target="_blank"
+              rel="noopener"
             >
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="1.5"
+                stroke-width="1.6"
                 stroke-linecap="round"
                 stroke-linejoin="round"
               >
@@ -1634,12 +1812,13 @@
               class="clnk"
               href="https://github.com/harishpranav-dev"
               target="_blank"
+              rel="noopener"
             >
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="1.5"
+                stroke-width="1.6"
                 stroke-linecap="round"
                 stroke-linejoin="round"
               >
@@ -1653,12 +1832,13 @@
               class="clnk"
               href="https://www.instagram.com/harishpranav__/"
               target="_blank"
+              rel="noopener"
             >
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="1.5"
+                stroke-width="1.6"
                 stroke-linecap="round"
                 stroke-linejoin="round"
               >
@@ -1675,7 +1855,7 @@
 
     <footer>
       <span class="fn">HARISHPRANAV R</span>
-      <p>Catch me anytime!</p>
+      <p>// catch me anytime</p>
     </footer>
 
     <script
@@ -1683,66 +1863,48 @@
       src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
     ></script>
     <script>
-      const cur = document.getElementById("cur");
-      let mx = 0,
-        my = 0;
-      document.addEventListener("mousemove", (e) => {
-        mx = e.clientX;
-        my = e.clientY;
-        cur.style.left = mx + "px";
-        cur.style.top = my + "px";
-        cur.style.opacity = "1";
-      });
-      document.addEventListener("mouseleave", () => {
-        cur.style.opacity = "0";
-      });
-      document.addEventListener("mouseenter", () => {
-        cur.style.opacity = "1";
-      });
-      document
-        .querySelectorAll("button,a,.pcard,.skilltag,.scard,.hpill")
-        .forEach((el) => {
-          el.addEventListener("mouseenter", () =>
-            cur.classList.add("hovering"),
-          );
-          el.addEventListener("mouseleave", () =>
-            cur.classList.remove("hovering"),
-          );
+      // smooth-scroll buttons
+      document.querySelectorAll("[data-scroll]").forEach((b) => {
+        b.addEventListener("click", () => {
+          const el = document.getElementById(b.dataset.scroll);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
         });
+      });
+
+      // scroll reveal
       const obs = new IntersectionObserver(
         (entries) =>
           entries.forEach((e) => {
-            if (e.isIntersecting) e.target.classList.add("on");
+            if (e.isIntersecting) {
+              e.target.classList.add("on");
+              obs.unobserve(e.target);
+            }
           }),
-        { threshold: 0.12 },
+        { threshold: 0.14 },
       );
       document.querySelectorAll(".rev").forEach((el) => obs.observe(el));
 
-      const hamBtn = document.getElementById("hamBtn");
-      const mobMenu = document.getElementById("mobMenu");
-      let menuOpen = false;
-
-      function closeMenu() {
-        menuOpen = false;
-        hamBtn.classList.remove("open");
-        mobMenu.classList.remove("open");
-        setTimeout(() => {
-          mobMenu.style.display = "none";
-        }, 300);
-        document.body.style.overflow = "";
-      }
-
-      hamBtn.addEventListener("click", () => {
-        menuOpen = !menuOpen;
-        hamBtn.classList.toggle("open", menuOpen);
-        if (menuOpen) {
-          mobMenu.style.display = "flex";
-          requestAnimationFrame(() => mobMenu.classList.add("open"));
+      // mobile menu
+      const ham = document.getElementById("ham");
+      const menu = document.getElementById("mobmenu");
+      let open = false;
+      function toggle(state) {
+        open = state;
+        ham.classList.toggle("open", open);
+        if (open) {
+          menu.style.display = "flex";
+          requestAnimationFrame(() => menu.classList.add("open"));
           document.body.style.overflow = "hidden";
         } else {
-          closeMenu();
+          menu.classList.remove("open");
+          document.body.style.overflow = "";
+          setTimeout(() => (menu.style.display = "none"), 300);
         }
-      });
+      }
+      ham.addEventListener("click", () => toggle(!open));
+      menu
+        .querySelectorAll("[data-close]")
+        .forEach((a) => a.addEventListener("click", () => toggle(false)));
     </script>
   </body>
 </html>
