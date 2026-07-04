@@ -5,18 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 </head>
-<!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="images/favicon.ico">
-
-<!-- PNG Favicons -->
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-
-<!-- Apple Devices -->
-<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-
-<!-- Android / PWA -->
-<link rel="manifest" href="images/site.webmanifest">
 <body>
 <x-dc>
 <helmet>
@@ -28,6 +16,48 @@
     body { margin: 0; background: #FAF9F5; --accent: #3E5C46; }
     ::selection { background: #3E5C46; color: #FAF9F5; }
     @keyframes mq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes heroFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes heroPulse { 0%,100% { opacity: 0.22; } 50% { opacity: 0.12; } }
+    @keyframes badgeSlideIn { 0% { transform: translateX(-30px) scale(0.85); opacity: 0; } 60% { transform: translateX(4px) scale(1.03); opacity: 1; } 100% { transform: translateX(0) scale(1); opacity: 1; } }
+    @keyframes badgeOrbit { 0% { transform: translateX(0) translateY(0); } 25% { transform: translateX(12px) translateY(-8px); } 50% { transform: translateX(0) translateY(-4px); } 75% { transform: translateX(-10px) translateY(2px); } 100% { transform: translateX(0) translateY(0); } }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      /* Hero grid: stack headline + photo */
+      #top > div:first-of-type { grid-template-columns: 1fr !important; min-height: auto !important; }
+      #top > div:first-of-type > div:last-child { justify-self: center !important; margin-top: 24px; }
+      #top > div:first-of-type > div:last-child img { width: 200px !important; }
+
+      /* About me + info box: stack */
+      #top > div:nth-of-type(2) { grid-template-columns: 1fr !important; }
+
+      /* DuoStack section grid */
+      #duostack > div:last-child { grid-template-columns: 1fr !important; }
+
+      /* Other work articles */
+      [data-screen-label="Other work"] article { grid-template-columns: 1fr !important; margin-left: 0 !important; }
+      [data-screen-label="Other work"] article > div:first-child { display: none; }
+
+      /* CareerCraftAI images */
+      #careercraft > div:last-of-type img:last-child { position: static !important; transform: none !important; width: 60% !important; margin-top: 16px; }
+
+      /* Craft section */
+      #craft > div:nth-of-type(2) { grid-template-columns: 1fr !important; }
+
+      /* Cricket section */
+      [data-screen-label="Cricket"] > div { grid-template-columns: 1fr !important; }
+
+      /* Contact email */
+      #contact a:first-of-type { font-size: clamp(18px, 5vw, 28px) !important; }
+    }
+
+    @media (max-width: 480px) {
+      #top > div:first-of-type > div:last-child img { width: 160px !important; }
+      #top h1 { font-size: clamp(32px, 10vw, 52px) !important; }
+      #duostack h2 { font-size: clamp(28px, 8vw, 42px) !important; }
+      #careercraft h2 { font-size: clamp(32px, 10vw, 52px) !important; }
+      [data-screen-label="Cricket"] h2 { font-size: clamp(28px, 8vw, 42px) !important; }
+    }
   </style>
   <script src="./image-slot.js"></script>
 </helmet>
@@ -46,33 +76,35 @@
   </header>
 
   <!-- ─────────── HERO ─────────── -->
-  <section id="top" data-screen-label="Hero" style="position:relative; padding:clamp(48px,9vh,110px) clamp(20px,6vw,72px) 0">
-    <p style="margin:0 0 clamp(20px,3vh,36px); font-family:'Spline Sans Mono',monospace; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(31,29,26,0.62)">
+  <section id="top" data-screen-label="Hero" style="position:relative; padding:clamp(40px,7vh,80px) clamp(20px,6vw,72px) 0">
+    <p style="margin:0 0 clamp(10px,1.5vh,20px); font-family:'Spline Sans Mono',monospace; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(31,29,26,0.62)">
       <span style="display:inline-block; width:10px; height:10px; background:var(--accent); margin-right:12px; vertical-align:baseline"></span>Tamil Nadu, India — full-stack developer · CEO, DuoStack
     </p>
-    <h1 style="margin:0; font-family:'Source Serif 4',serif; font-weight:500; font-size:clamp(50px,9.2vw,146px); line-height:0.98; letter-spacing:-0.015em; max-width:14ch; text-wrap:balance">
-      The degree is in progress. <span style="color:var(--accent)">The company is already running.</span>
-    </h1>
+    <!-- Hero grid: headline left, photo right -->
+    <div style="display:grid; grid-template-columns:1fr minmax(200px,0.38fr); gap:clamp(24px,4vw,64px); align-items:center; min-height:clamp(340px,60vh,560px)">
+      <h1 style="margin:0; font-family:'Source Serif 4',serif; font-weight:500; font-size:clamp(44px,7.8vw,118px); line-height:0.97; letter-spacing:-0.015em; max-width:14ch; text-wrap:balance">
+        The degree is in progress. <span style="color:var(--accent)">The company is already running.</span>
+      </h1>
+      <div style="position:relative; justify-self:end">
+        <img src="./images/harish.png" alt="Harishpranav R" style="width:clamp(180px,22vw,320px); height:auto; aspect-ratio:3/4; object-fit:cover; object-position:top center; border-radius:16px; filter:grayscale(0.12) contrast(1.04); box-shadow:0 32px 80px rgba(31,29,26,0.14); ">
+        <div style="position:absolute; bottom:-14px; left:-14px; background:var(--accent); color:#FAF9F5; font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; padding:8px 14px; border-radius:8px; white-space:nowrap; animation: badgeSlideIn 0.8s cubic-bezier(.2,.6,.2,1) 0.6s both, badgeOrbit 6s ease-in-out 1.6s infinite">Co-founder · CEO</div>
+      </div>
+    </div>
 
-    <!-- About me brief -->
-    <div style="display:grid; grid-template-columns:minmax(240px,1fr) minmax(200px,0.45fr); gap:clamp(32px,5vw,80px); align-items:start; margin-top:clamp(40px,7vh,84px)">
+    <!-- About me brief + info box side by side -->
+    <div style="display:grid; grid-template-columns:1fr minmax(280px,0.45fr); gap:clamp(32px,5vw,64px); align-items:start; margin-top:clamp(72px,14vh,140px); padding-bottom:clamp(40px,7vh,72px)">
       <div>
-        <p style="margin:0 0 20px; font-size:clamp(18px,1.5vw,22px); color:rgba(31,29,26,0.88); max-width:55ch; line-height:1.7">
+        <p style="margin:0 0 18px; font-size:clamp(16px,1.25vw,19px); color:rgba(31,29,26,0.88); max-width:55ch; line-height:1.7">
           I'm <strong style="font-weight:600">Harishpranav&nbsp;R</strong>, a self-taught full-stack developer from Tamil Nadu, India. Most people my age are collecting certifications. I'm collecting production deploys.
         </p>
-        <p style="margin:0 0 20px; font-size:clamp(17px,1.4vw,20px); color:rgba(31,29,26,0.78); max-width:55ch; line-height:1.7">
+        <p style="margin:0 0 18px; font-size:clamp(15px,1.2vw,18px); color:rgba(31,29,26,0.78); max-width:55ch; line-height:1.7">
           As the Co-Founder of <strong style="font-weight:600">DuoStack</strong>, I work with an incredible team to build technology products that deliver real value. Today, our flagship platform, <a href="https://careercraftai.in" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent)">CareerCraftAI</a>, is live in production, serving real users with a focus on quality, reliability, and innovation.
         </p>
-        <p style="margin:0; font-size:clamp(16px,1.3vw,19px); color:rgba(31,29,26,0.68); max-width:55ch; line-height:1.7">
+        <p style="margin:0; font-size:clamp(15px,1.2vw,18px); color:rgba(31,29,26,0.68); max-width:55ch; line-height:1.7">
           The B.Sc in Computer Science is happening in parallel. The shipping never stopped for it.
         </p>
       </div>
-      <img src="./images/harish.png" alt="Harishpranav R" style="width:100%; max-width:360px; height:auto; aspect-ratio:2/3; object-fit:cover; object-position:top center; border-radius:16px; filter:grayscale(0.15) contrast(1.04); justify-self:end">
-    </div>
-
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(28px,5vw,80px); align-items:start; margin-top:clamp(40px,6vh,64px); padding-bottom:clamp(40px,7vh,72px)">
-      <div>
-      <dl style="margin:0; max-width:460px; justify-self:end; width:100%">
+      <dl style="margin:0; width:100%">
         <div style="display:flex; justify-content:space-between; gap:20px; padding:12px 0; border-top:1px solid rgba(31,29,26,0.14)">
           <dt style="font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(31,29,26,0.55)">Now</dt>
           <dd style="margin:0; font-size:15px; text-align:right">Co-founder &amp; CEO, DuoStack</dd>
@@ -92,7 +124,7 @@
       </dl>
     </div>
 
-    <div aria-hidden="true" style="font-family:'Source Serif 4',serif; font-size:clamp(90px,17vw,270px); line-height:0.72; letter-spacing:0.02em; color:transparent; -webkit-text-stroke:1px rgba(31,29,26,0.22); white-space:nowrap; user-select:none; pointer-events:none; margin:0 calc(-1 * clamp(20px,6vw,72px)) -0.06em; overflow:hidden">HP</div>
+    <div aria-hidden="true" style="font-family:'Source Serif 4',serif; font-size:clamp(60px,11vw,170px); line-height:0.72; letter-spacing:0.02em; color:transparent; -webkit-text-stroke:1px rgba(31,29,26,0.22); white-space:nowrap; animation:heroPulse 4s ease-in-out infinite; user-select:none; pointer-events:none; margin:0 calc(-1 * clamp(20px,6vw,72px)) -0.06em; overflow:hidden">HP</div>
   </section>
 
   <!-- ─────────── MARQUEE ─────────── -->
@@ -122,18 +154,18 @@
           DuoStack is a technology startup where every product is built with ownership and purpose. Every idea, every line of code, and every user experience is our responsibility. As a team, we collaborate to make strategic decisions, solve complex problems, and continuously improve our products.
         </p>
         <a href="https://www.instagram.com/duostack_official" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:12px; padding:14px 24px; background:var(--accent); color:#FAF9F5; text-decoration:none; font-family:'Spline Sans Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; border-radius:10px" style-hover="background:#FAF9F5; color:#1F1D1A">Follow the build — @duostack_official ↗</a>
+        <div style="border:1px solid rgba(250,249,245,0.22); padding:clamp(24px,3vw,40px); border-radius:16px; margin-top:clamp(28px,4vh,40px)">
+          <p style="margin:0 0 18px; font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(250,249,245,0.55)">My half of the CEO seat</p>
+          <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column">
+            <li style="padding:14px 0; border-top:1px solid rgba(250,249,245,0.16); font-size:16px">Defining product vision, strategy, and long-term roadmap across our platforms.</li>
+            <li style="padding:14px 0; border-top:1px solid rgba(250,249,245,0.16); font-size:16px">Leading full-stack engineering — from architecture and backend systems to polished user experiences.</li>
+            <li style="padding:14px 0; border-top:1px solid rgba(250,249,245,0.16); font-size:16px">Owning infrastructure, production releases, platform reliability, and delivering a seamless experience for every user.</li>
+          </ul>
+          <p style="margin:22px 0 0; font-size:14px; color:rgba(250,249,245,0.6)">Co-founded and built with an <strong style="font-weight:600; color:#FAF9F5">incredible team.</strong></p>
+        </div>
       </div>
       <div data-reveal="true" style="display:flex; flex-direction:column; gap:clamp(28px,4vh,40px)">
         <img src="./images/Portfolio.png" alt="Harishpranav R at work" style="width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; object-position:top center; border-radius:16px; border:1px solid rgba(250,249,245,0.16)">
-        <div style="border:1px solid rgba(250,249,245,0.22); padding:clamp(24px,3vw,40px); border-radius:16px">
-        <p style="margin:0 0 18px; font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(250,249,245,0.55)">My half of the CEO seat</p>
-        <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column">
-          <li style="padding:14px 0; border-top:1px solid rgba(250,249,245,0.16); font-size:16px">Defining product vision, strategy, and long-term roadmap across our platforms.</li>
-          <li style="padding:14px 0; border-top:1px solid rgba(250,249,245,0.16); font-size:16px">Leading full-stack engineering — from architecture and backend systems to polished user experiences.</li>
-          <li style="padding:14px 0; border-top:1px solid rgba(250,249,245,0.16); font-size:16px">Owning infrastructure, production releases, platform reliability, and delivering a seamless experience for every user.</li>
-        </ul>
-        <p style="margin:22px 0 0; font-size:14px; color:rgba(250,249,245,0.6)">Co-founded and built with an <strong style="font-weight:600; color:#FAF9F5">incredible team.</strong></p>
-        </div>
       </div>
     </div>
   </section>
@@ -166,7 +198,7 @@
     </blockquote>
 
     <div data-reveal="true" style="position:relative; max-width:1100px">
-      <img src="./images/careercraft.png" alt="careercraft intro page" style="width:100%; height:auto; aspect-ratio:16/9; display:block; border:1px solid rgba(31,29,26,0.25)"></img>
+      <img src="./images/careercraft.png" alt="CareerCraftAI — dashboard screenshot" style="width:100%; height:auto; aspect-ratio:16/9; display:block; border:1px solid rgba(31,29,26,0.25); border-radius:16px; object-fit:cover">
       <img src="./images/Duostack.jpeg" alt="DuoStack logo" style="width:min(280px,38%); height:auto; aspect-ratio:4/3; object-fit:contain; display:block; position:absolute; right:clamp(8px,3vw,48px); bottom:-40px; transform:rotate(-2deg); box-shadow:0 24px 60px rgba(31,29,26,0.18); background:#1F1D1A; border-radius:16px; padding:24px">
     </div>
     <div style="height:72px"></div>
@@ -274,7 +306,7 @@
     <p data-reveal="true" style="margin:0 0 16px; font-family:'Spline Sans Mono',monospace; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent)">05 — Say vanakkam</p>
     <h2 data-reveal="true" style="margin:0 0 clamp(32px,5vh,56px); font-family:'Source Serif 4',serif; font-weight:500; font-size:clamp(34px,4.6vw,68px); line-height:1.05; max-width:20ch">The form is that there's no form.</h2>
 
-    <a data-reveal="true" href="/cdn-cgi/l/email-protection#1f777e6d766c776f6d7e717e693168706d745f78727e7673317c7072" style="display:block; font-family:'Source Serif 4',serif; font-size:clamp(24px,4.8vw,72px); line-height:1.1; color:#FAF9F5; text-decoration:none; overflow-wrap:anywhere; border-bottom:2px solid var(--accent); padding-bottom:clamp(12px,2vh,24px); margin-bottom:clamp(36px,6vh,60px); max-width:max-content" style-hover="color:var(--accent)"><span class="__cf_email__" data-cfemail="2e464f5c475d465e5c4f404f580059415c456e49434f4742004d4143">[email&#160;protected]</span></a>
+    <a data-reveal="true" href="/cdn-cgi/l/email-protection#412920332832293133202f20376f362e332a01262c20282d6f222e2c" style="display:block; font-family:'Source Serif 4',serif; font-size:clamp(24px,4.8vw,72px); line-height:1.1; color:#FAF9F5; text-decoration:none; overflow-wrap:anywhere; border-bottom:2px solid var(--accent); padding-bottom:clamp(12px,2vh,24px); margin-bottom:clamp(36px,6vh,60px); max-width:max-content" style-hover="color:var(--accent)"><span class="__cf_email__" data-cfemail="c0a8a1b2a9b3a8b0b2a1aea1b6eeb7afb2ab80a7ada1a9aceea3afad">[email&#160;protected]</span></a>
 
     <div data-reveal="true" style="display:flex; gap:clamp(20px,4vw,48px); flex-wrap:wrap; margin-bottom:clamp(48px,8vh,80px)">
       <a href="https://www.instagram.com/harishpranav__/" target="_blank" rel="noopener" style="font-family:'Spline Sans Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(250,249,245,0.75); text-decoration:none" style-hover="color:var(--accent)">Instagram — @harishpranav__ ↗</a>
