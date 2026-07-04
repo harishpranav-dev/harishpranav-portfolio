@@ -1,377 +1,1859 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&amp;family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;1,400&amp;family=Spline+Sans+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-  <style>
-    html { scroll-behavior: smooth; }
-    body { margin: 0; background: #FAF9F5; --accent: #3E5C46; }
-    ::selection { background: #3E5C46; color: #FAF9F5; }
-    @keyframes mq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    @keyframes heroFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-    @keyframes heroPulse { 0%,100% { opacity: 0.22; } 50% { opacity: 0.12; } }
-    @keyframes badgeSlideIn { 0% { transform: translateX(-30px) scale(0.85); opacity: 0; } 60% { transform: translateX(4px) scale(1.03); opacity: 1; } 100% { transform: translateX(0) scale(1); opacity: 1; } }
-    @keyframes badgeOrbit { 0% { transform: translateX(0) translateY(0); } 25% { transform: translateX(12px) translateY(-8px); } 50% { transform: translateX(0) translateY(-4px); } 75% { transform: translateX(-10px) translateY(2px); } 100% { transform: translateX(0) translateY(0); } }
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="./support.js"></script>
+  </head>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
 
-    /* ── Responsive ── */
-    @media (max-width: 768px) {
-      /* Hero grid: stack headline + photo */
-      #top > div:first-of-type { grid-template-columns: 1fr !important; min-height: auto !important; }
-      #top > div:first-of-type > div:last-child { justify-self: center !important; margin-top: 24px; }
-      #top > div:first-of-type > div:last-child img { width: 200px !important; }
+  <!-- PNG Favicons -->
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="images/favicon-32x32.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="images/favicon-16x16.png"
+  />
 
-      /* About me + info box: stack */
-      #top > div:nth-of-type(2) { grid-template-columns: 1fr !important; }
+  <!-- Apple Devices -->
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="images/apple-touch-icon.png"
+  />
 
-      /* DuoStack section grid */
-      #duostack > div:last-child { grid-template-columns: 1fr !important; }
+  <!-- Android / PWA -->
+  <link rel="manifest" href="images/site.webmanifest" />
+  <body>
+    <x-dc>
+      <helmet>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&amp;family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;1,400&amp;family=Spline+Sans+Mono:wght@400;500&amp;display=swap"
+          rel="stylesheet"
+        />
+        <style>
+          html {
+            scroll-behavior: smooth;
+          }
+          body {
+            margin: 0;
+            background: #faf9f5;
+            --accent: #3e5c46;
+          }
+          ::selection {
+            background: #3e5c46;
+            color: #faf9f5;
+          }
+          @keyframes mq {
+            from {
+              transform: translateX(0);
+            }
+            to {
+              transform: translateX(-50%);
+            }
+          }
+          @keyframes heroFloat {
+            0%,
+            100% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(-10px);
+            }
+          }
+          @keyframes heroPulse {
+            0%,
+            100% {
+              opacity: 0.22;
+            }
+            50% {
+              opacity: 0.12;
+            }
+          }
+          @keyframes badgeSlideIn {
+            0% {
+              transform: translateX(-30px) scale(0.85);
+              opacity: 0;
+            }
+            60% {
+              transform: translateX(4px) scale(1.03);
+              opacity: 1;
+            }
+            100% {
+              transform: translateX(0) scale(1);
+              opacity: 1;
+            }
+          }
+          @keyframes badgeOrbit {
+            0% {
+              transform: translateX(0) translateY(0);
+            }
+            25% {
+              transform: translateX(12px) translateY(-8px);
+            }
+            50% {
+              transform: translateX(0) translateY(-4px);
+            }
+            75% {
+              transform: translateX(-10px) translateY(2px);
+            }
+            100% {
+              transform: translateX(0) translateY(0);
+            }
+          }
 
-      /* Other work articles */
-      [data-screen-label="Other work"] article { grid-template-columns: 1fr !important; margin-left: 0 !important; }
-      [data-screen-label="Other work"] article > div:first-child { display: none; }
+          /* ── Responsive ── */
+          @media (max-width: 768px) {
+            /* Hero grid: stack headline + photo */
+            #top > div:first-of-type {
+              grid-template-columns: 1fr !important;
+              min-height: auto !important;
+            }
+            #top > div:first-of-type > div:last-child {
+              justify-self: center !important;
+              margin-top: 24px;
+            }
+            #top > div:first-of-type > div:last-child img {
+              width: 200px !important;
+            }
 
-      /* CareerCraftAI images */
-      #careercraft > div:last-of-type img:last-child { position: static !important; transform: none !important; width: 60% !important; margin-top: 16px; }
+            /* About me + info box: stack */
+            #top > div:nth-of-type(2) {
+              grid-template-columns: 1fr !important;
+            }
 
-      /* Craft section */
-      #craft > div:nth-of-type(2) { grid-template-columns: 1fr !important; }
+            /* DuoStack section grid */
+            #duostack > div:last-child {
+              grid-template-columns: 1fr !important;
+            }
 
-      /* Cricket section */
-      [data-screen-label="Cricket"] > div { grid-template-columns: 1fr !important; }
+            /* Other work articles */
+            [data-screen-label="Other work"] article {
+              grid-template-columns: 1fr !important;
+              margin-left: 0 !important;
+            }
+            [data-screen-label="Other work"] article > div:first-child {
+              display: none;
+            }
 
-      /* Contact email */
-      #contact a:first-of-type { font-size: clamp(18px, 5vw, 28px) !important; }
-    }
+            /* CareerCraftAI images */
+            #careercraft > div:last-of-type img:last-child {
+              position: static !important;
+              transform: none !important;
+              width: 60% !important;
+              margin-top: 16px;
+            }
 
-    @media (max-width: 480px) {
-      #top > div:first-of-type > div:last-child img { width: 160px !important; }
-      #top h1 { font-size: clamp(32px, 10vw, 52px) !important; }
-      #duostack h2 { font-size: clamp(28px, 8vw, 42px) !important; }
-      #careercraft h2 { font-size: clamp(32px, 10vw, 52px) !important; }
-      [data-screen-label="Cricket"] h2 { font-size: clamp(28px, 8vw, 42px) !important; }
-    }
-  </style>
-  <script src="./image-slot.js"></script>
-</helmet>
+            /* Craft section */
+            #craft > div:nth-of-type(2) {
+              grid-template-columns: 1fr !important;
+            }
 
-<div data-screen-label="Portfolio" style="background:#FAF9F5; color:#1F1D1A; font-family:'Schibsted Grotesk',sans-serif; font-size:17px; line-height:1.7; overflow-x:hidden; min-height:100vh">
+            /* Cricket section */
+            [data-screen-label="Cricket"] > div {
+              grid-template-columns: 1fr !important;
+            }
 
-  <!-- ─────────── NAV ─────────── -->
-  <header data-screen-label="Nav" style="display:flex; align-items:baseline; justify-content:space-between; gap:24px; flex-wrap:wrap; padding:clamp(18px,3vw,32px) clamp(20px,6vw,72px); border-bottom:1px solid rgba(31,29,26,0.14)">
-    <a href="#top" style="font-family:'Spline Sans Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:#1F1D1A; text-decoration:none; font-weight:500">Harishpranav&nbsp;R <span style="color:var(--accent)">/</span> Duo_Stack</a>
-    <nav style="display:flex; gap:clamp(16px,3vw,36px); flex-wrap:wrap">
-      <a href="#duostack" style="font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#1F1D1A; text-decoration:none" style-hover="color:var(--accent)">DuoStack</a>
-      <a href="#careercraft" style="font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#1F1D1A; text-decoration:none" style-hover="color:var(--accent)">Work</a>
-      <a href="#craft" style="font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#1F1D1A; text-decoration:none" style-hover="color:var(--accent)">Craft</a>
-      <a href="#contact" style="font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); text-decoration:none">Contact ↓</a>
-    </nav>
-  </header>
+            /* Contact email */
+            #contact a:first-of-type {
+              font-size: clamp(18px, 5vw, 28px) !important;
+            }
+          }
 
-  <!-- ─────────── HERO ─────────── -->
-  <section id="top" data-screen-label="Hero" style="position:relative; padding:clamp(40px,7vh,80px) clamp(20px,6vw,72px) 0">
-    <p style="margin:0 0 clamp(10px,1.5vh,20px); font-family:'Spline Sans Mono',monospace; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(31,29,26,0.62)">
-      <span style="display:inline-block; width:10px; height:10px; background:var(--accent); margin-right:12px; vertical-align:baseline"></span>Tamil Nadu, India — full-stack developer · CEO, DuoStack
-    </p>
-    <!-- Hero grid: headline left, photo right -->
-    <div style="display:grid; grid-template-columns:1fr minmax(200px,0.38fr); gap:clamp(24px,4vw,64px); align-items:center; min-height:clamp(340px,60vh,560px)">
-      <h1 style="margin:0; font-family:'Source Serif 4',serif; font-weight:500; font-size:clamp(44px,7.8vw,118px); line-height:0.97; letter-spacing:-0.015em; max-width:14ch; text-wrap:balance">
-        The degree is in progress. <span style="color:var(--accent)">The company is already running.</span>
-      </h1>
-      <div style="position:relative; justify-self:end">
-        <img src="./images/harish.png" alt="Harishpranav R" style="width:clamp(180px,22vw,320px); height:auto; aspect-ratio:3/4; object-fit:cover; object-position:top center; border-radius:16px; filter:grayscale(0.12) contrast(1.04); box-shadow:0 32px 80px rgba(31,29,26,0.14); ">
-        <div style="position:absolute; bottom:-14px; left:-14px; background:var(--accent); color:#FAF9F5; font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; padding:8px 14px; border-radius:8px; white-space:nowrap; animation: badgeSlideIn 0.8s cubic-bezier(.2,.6,.2,1) 0.6s both, badgeOrbit 6s ease-in-out 1.6s infinite">Co-founder · CEO</div>
+          @media (max-width: 480px) {
+            #top > div:first-of-type > div:last-child img {
+              width: 160px !important;
+            }
+            #top h1 {
+              font-size: clamp(32px, 10vw, 52px) !important;
+            }
+            #duostack h2 {
+              font-size: clamp(28px, 8vw, 42px) !important;
+            }
+            #careercraft h2 {
+              font-size: clamp(32px, 10vw, 52px) !important;
+            }
+            [data-screen-label="Cricket"] h2 {
+              font-size: clamp(28px, 8vw, 42px) !important;
+            }
+          }
+        </style>
+        <script src="./image-slot.js"></script>
+      </helmet>
+
+      <div
+        data-screen-label="Portfolio"
+        style="
+          background: #faf9f5;
+          color: #1f1d1a;
+          font-family: &quot;Schibsted Grotesk&quot;, sans-serif;
+          font-size: 17px;
+          line-height: 1.7;
+          overflow-x: hidden;
+          min-height: 100vh;
+        "
+      >
+        <!-- ─────────── NAV ─────────── -->
+        <header
+          data-screen-label="Nav"
+          style="
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+            padding: clamp(18px, 3vw, 32px) clamp(20px, 6vw, 72px);
+            border-bottom: 1px solid rgba(31, 29, 26, 0.14);
+          "
+        >
+          <a
+            href="#top"
+            style="
+              font-family: &quot;Spline Sans Mono&quot;, monospace;
+              font-size: 13px;
+              letter-spacing: 0.12em;
+              text-transform: uppercase;
+              color: #1f1d1a;
+              text-decoration: none;
+              font-weight: 500;
+            "
+            >Harishpranav&nbsp;R
+            <span style="color: var(--accent)">/</span> Duo_Stack</a
+          >
+          <nav
+            style="display: flex; gap: clamp(16px, 3vw, 36px); flex-wrap: wrap"
+          >
+            <a
+              href="#duostack"
+              style="
+                font-family: &quot;Spline Sans Mono&quot;, monospace;
+                font-size: 12px;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                color: #1f1d1a;
+                text-decoration: none;
+              "
+              style-hover="color:var(--accent)"
+              >DuoStack</a
+            >
+            <a
+              href="#careercraft"
+              style="
+                font-family: &quot;Spline Sans Mono&quot;, monospace;
+                font-size: 12px;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                color: #1f1d1a;
+                text-decoration: none;
+              "
+              style-hover="color:var(--accent)"
+              >Work</a
+            >
+            <a
+              href="#craft"
+              style="
+                font-family: &quot;Spline Sans Mono&quot;, monospace;
+                font-size: 12px;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                color: #1f1d1a;
+                text-decoration: none;
+              "
+              style-hover="color:var(--accent)"
+              >Craft</a
+            >
+            <a
+              href="#contact"
+              style="
+                font-family: &quot;Spline Sans Mono&quot;, monospace;
+                font-size: 12px;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                color: var(--accent);
+                text-decoration: none;
+              "
+              >Contact ↓</a
+            >
+          </nav>
+        </header>
+
+        <!-- ─────────── HERO ─────────── -->
+        <section
+          id="top"
+          data-screen-label="Hero"
+          style="
+            position: relative;
+            padding: clamp(40px, 7vh, 80px) clamp(20px, 6vw, 72px) 0;
+          "
+        >
+          <p
+            style="
+              margin: 0 0 clamp(10px, 1.5vh, 20px);
+              font-family: &quot;Spline Sans Mono&quot;, monospace;
+              font-size: 13px;
+              letter-spacing: 0.14em;
+              text-transform: uppercase;
+              color: rgba(31, 29, 26, 0.62);
+            "
+          >
+            <span
+              style="
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                background: var(--accent);
+                margin-right: 12px;
+                vertical-align: baseline;
+              "
+            ></span
+            >Tamil Nadu, India — full-stack developer · CEO, DuoStack
+          </p>
+          <!-- Hero grid: headline left, photo right -->
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr minmax(200px, 0.38fr);
+              gap: clamp(24px, 4vw, 64px);
+              align-items: center;
+              min-height: clamp(340px, 60vh, 560px);
+            "
+          >
+            <h1
+              style="
+                margin: 0;
+                font-family: &quot;Source Serif 4&quot;, serif;
+                font-weight: 500;
+                font-size: clamp(44px, 7.8vw, 118px);
+                line-height: 0.97;
+                letter-spacing: -0.015em;
+                max-width: 14ch;
+                text-wrap: balance;
+              "
+            >
+              The degree is in progress.
+              <span style="color: var(--accent)"
+                >The company is already running.</span
+              >
+            </h1>
+            <div style="position: relative; justify-self: end">
+              <img
+                src="./images/harish.png"
+                alt="Harishpranav R"
+                style="
+                  width: clamp(180px, 22vw, 320px);
+                  height: auto;
+                  aspect-ratio: 3/4;
+                  object-fit: cover;
+                  object-position: top center;
+                  border-radius: 16px;
+                  filter: grayscale(0.12) contrast(1.04);
+                  box-shadow: 0 32px 80px rgba(31, 29, 26, 0.14);
+                "
+              />
+              <div
+                style="
+                  position: absolute;
+                  bottom: -14px;
+                  left: -14px;
+                  background: var(--accent);
+                  color: #faf9f5;
+                  font-family: &quot;Spline Sans Mono&quot;, monospace;
+                  font-size: 11px;
+                  letter-spacing: 0.14em;
+                  text-transform: uppercase;
+                  padding: 8px 14px;
+                  border-radius: 8px;
+                  white-space: nowrap;
+                  animation:
+                    badgeSlideIn 0.8s cubic-bezier(0.2, 0.6, 0.2, 1) 0.6s both,
+                    badgeOrbit 6s ease-in-out 1.6s infinite;
+                "
+              >
+                Co-founder · CEO
+              </div>
+            </div>
+          </div>
+
+          <!-- About me brief + info box side by side -->
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr minmax(280px, 0.45fr);
+              gap: clamp(32px, 5vw, 64px);
+              align-items: start;
+              margin-top: clamp(72px, 14vh, 140px);
+              padding-bottom: clamp(40px, 7vh, 72px);
+            "
+          >
+            <div>
+              <p
+                style="
+                  margin: 0 0 18px;
+                  font-size: clamp(16px, 1.25vw, 19px);
+                  color: rgba(31, 29, 26, 0.88);
+                  max-width: 55ch;
+                  line-height: 1.7;
+                "
+              >
+                I'm
+                <strong style="font-weight: 600">Harishpranav&nbsp;R</strong>, a
+                self-taught full-stack developer from Tamil Nadu, India. Most
+                people my age are collecting certifications. I'm collecting
+                production deploys.
+              </p>
+              <p
+                style="
+                  margin: 0 0 18px;
+                  font-size: clamp(15px, 1.2vw, 18px);
+                  color: rgba(31, 29, 26, 0.78);
+                  max-width: 55ch;
+                  line-height: 1.7;
+                "
+              >
+                As the Co-Founder of
+                <strong style="font-weight: 600">DuoStack</strong>, I work with
+                an incredible team to build technology products that deliver
+                real value. Today, our flagship platform,
+                <a
+                  href="https://careercraftai.in"
+                  target="_blank"
+                  rel="noopener"
+                  style="
+                    color: var(--accent);
+                    text-decoration: none;
+                    border-bottom: 1px solid var(--accent);
+                  "
+                  >CareerCraftAI</a
+                >, is live in production, serving real users with a focus on
+                quality, reliability, and innovation.
+              </p>
+              <p
+                style="
+                  margin: 0;
+                  font-size: clamp(15px, 1.2vw, 18px);
+                  color: rgba(31, 29, 26, 0.68);
+                  max-width: 55ch;
+                  line-height: 1.7;
+                "
+              >
+                The B.Sc in Computer Science is happening in parallel. The
+                shipping never stopped for it.
+              </p>
+            </div>
+            <dl style="margin: 0; width: 100%">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  gap: 20px;
+                  padding: 12px 0;
+                  border-top: 1px solid rgba(31, 29, 26, 0.14);
+                "
+              >
+                <dt
+                  style="
+                    font-family: &quot;Spline Sans Mono&quot;, monospace;
+                    font-size: 12px;
+                    letter-spacing: 0.14em;
+                    text-transform: uppercase;
+                    color: rgba(31, 29, 26, 0.55);
+                  "
+                >
+                  Now
+                </dt>
+                <dd style="margin: 0; font-size: 15px; text-align: right">
+                  Co-founder &amp; CEO, DuoStack
+                </dd>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  gap: 20px;
+                  padding: 12px 0;
+                  border-top: 1px solid rgba(31, 29, 26, 0.14);
+                "
+              >
+                <dt
+                  style="
+                    font-family: &quot;Spline Sans Mono&quot;, monospace;
+                    font-size: 12px;
+                    letter-spacing: 0.14em;
+                    text-transform: uppercase;
+                    color: rgba(31, 29, 26, 0.55);
+                  "
+                >
+                  Flagship
+                </dt>
+                <dd style="margin: 0; font-size: 15px; text-align: right">
+                  <a
+                    href="https://careercraftai.in"
+                    target="_blank"
+                    rel="noopener"
+                    style="
+                      color: var(--accent);
+                      text-decoration: none;
+                      border-bottom: 1px solid var(--accent);
+                    "
+                    >careercraftai.in</a
+                  >
+                </dd>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  gap: 20px;
+                  padding: 12px 0;
+                  border-top: 1px solid rgba(31, 29, 26, 0.14);
+                "
+              >
+                <dt
+                  style="
+                    font-family: &quot;Spline Sans Mono&quot;, monospace;
+                    font-size: 12px;
+                    letter-spacing: 0.14em;
+                    text-transform: uppercase;
+                    color: rgba(31, 29, 26, 0.55);
+                  "
+                >
+                  Studying
+                </dt>
+                <dd style="margin: 0; font-size: 15px; text-align: right">
+                  B.Sc Computer Science
+                </dd>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  gap: 20px;
+                  padding: 12px 0;
+                  border-top: 1px solid rgba(31, 29, 26, 0.14);
+                  border-bottom: 1px solid rgba(31, 29, 26, 0.14);
+                "
+              >
+                <dt
+                  style="
+                    font-family: &quot;Spline Sans Mono&quot;, monospace;
+                    font-size: 12px;
+                    letter-spacing: 0.14em;
+                    text-transform: uppercase;
+                    color: rgba(31, 29, 26, 0.55);
+                  "
+                >
+                  Handle
+                </dt>
+                <dd style="margin: 0; font-size: 15px; text-align: right">
+                  Duo_Stack
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+          <div
+            aria-hidden="true"
+            style="
+              font-family: &quot;Source Serif 4&quot;, serif;
+              font-size: clamp(60px, 11vw, 170px);
+              line-height: 0.72;
+              letter-spacing: 0.02em;
+              color: transparent;
+              -webkit-text-stroke: 1px rgba(31, 29, 26, 0.22);
+              white-space: nowrap;
+              animation: heroPulse 4s ease-in-out infinite;
+              user-select: none;
+              pointer-events: none;
+              margin: 0 calc(-1 * clamp(20px, 6vw, 72px)) -0.06em;
+              overflow: hidden;
+            "
+          >
+            HP
+          </div>
+        </section>
+
+        <!-- ─────────── MARQUEE ─────────── -->
+        <sc-if value="{{ showMarquee }}" hint-placeholder-val="{{ true }}">
+          <div
+            data-screen-label="Marquee"
+            style="
+              border-top: 1px solid #1f1d1a;
+              border-bottom: 1px solid #1f1d1a;
+              background: #f0eee6;
+              overflow: hidden;
+              padding: 14px 0;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                width: max-content;
+                animation: mq 26s linear infinite;
+              "
+            >
+              <span
+                style="
+                  font-family: &quot;Spline Sans Mono&quot;, monospace;
+                  font-size: 14px;
+                  letter-spacing: 0.18em;
+                  text-transform: uppercase;
+                  white-space: nowrap;
+                  padding-right: 48px;
+                "
+                >Harishpranav R · Duo_Stack · careercraftai.in · shipped &gt;
+                perfect · React / Next.js / Node / Postgres · AI in the loop ·
+                Tamil Nadu → everywhere ·&nbsp;</span
+              >
+              <span
+                style="
+                  font-family: &quot;Spline Sans Mono&quot;, monospace;
+                  font-size: 14px;
+                  letter-spacing: 0.18em;
+                  text-transform: uppercase;
+                  white-space: nowrap;
+                  padding-right: 48px;
+                "
+                >Harishpranav R · Duo_Stack · careercraftai.in · shipped &gt;
+                perfect · React / Next.js / Node / Postgres · AI in the loop ·
+                Tamil Nadu → everywhere ·&nbsp;</span
+              >
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ─────────── DUOSTACK — INK BAND ─────────── -->
+        <section
+          id="duostack"
+          data-screen-label="DuoStack"
+          style="
+            position: relative;
+            background: #1f1d1a;
+            color: #faf9f5;
+            padding: clamp(64px, 11vh, 130px) clamp(20px, 6vw, 72px);
+            overflow: hidden;
+          "
+        >
+          <div
+            aria-hidden="true"
+            style="
+              position: absolute;
+              top: -0.08em;
+              right: -0.04em;
+              font-family: &quot;Source Serif 4&quot;, serif;
+              font-size: clamp(120px, 22vw, 340px);
+              line-height: 1;
+              color: transparent;
+              -webkit-text-stroke: 1px rgba(250, 249, 245, 0.14);
+              user-select: none;
+              pointer-events: none;
+            "
+          >
+            01
+          </div>
+          <p
+            data-reveal="true"
+            style="
+              margin: 0 0 20px;
+              font-family: &quot;Spline Sans Mono&quot;, monospace;
+              font-size: 13px;
+              letter-spacing: 0.16em;
+              text-transform: uppercase;
+              color: var(--accent);
+            "
+          >
+            01 — Present tense
+          </p>
+          <h2
+            data-reveal="true"
+            style="
+              margin: 0 0 clamp(36px, 6vh, 64px);
+              font-family: &quot;Source Serif 4&quot;, serif;
+              font-weight: 500;
+              font-size: clamp(38px, 5.6vw, 84px);
+              line-height: 1.04;
+              letter-spacing: -0.01em;
+              max-width: 18ch;
+            "
+          >
+            DuoStack isn't a line on my résumé. It's my calendar.
+          </h2>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+              gap: clamp(32px, 5vw, 88px);
+              align-items: start;
+            "
+          >
+            <div data-reveal="true">
+              <p
+                style="
+                  margin: 0 0 22px;
+                  font-size: clamp(17px, 1.35vw, 19px);
+                  color: rgba(250, 249, 245, 0.85);
+                  max-width: 55ch;
+                "
+              >
+                In Tamil Nadu, a tech side usually means joining a service
+                company and maintaining someone else's product. Me and my team
+                wanted the other seat — the one that decides <em>what</em> gets
+                built. So we made it ourselves.
+              </p>
+              <p
+                style="
+                  margin: 0 0 34px;
+                  font-size: clamp(17px, 1.35vw, 19px);
+                  color: rgba(250, 249, 245, 0.85);
+                  max-width: 55ch;
+                "
+              >
+                DuoStack is a technology startup where every product is built
+                with ownership and purpose. Every idea, every line of code, and
+                every user experience is our responsibility. As a team, we
+                collaborate to make strategic decisions, solve complex problems,
+                and continuously improve our products.
+              </p>
+              <a
+                href="https://www.instagram.com/duostack_official"
+                target="_blank"
+                rel="noopener"
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 12px;
+                  padding: 14px 24px;
+                  background: var(--accent);
+                  color: #faf9f5;
+                  text-decoration: none;
+                  font-family: &quot;Spline Sans Mono&quot;, monospace;
+                  font-size: 13px;
+                  letter-spacing: 0.12em;
+                  text-transform: uppercase;
+                  border-radius: 10px;
+                "
+                style-hover="background:#FAF9F5; color:#1F1D1A"
+                >Follow the build — @duostack_official ↗</a
+              >
+              <div
+                style="
+                  border: 1px solid rgba(250, 249, 245, 0.22);
+                  padding: clamp(24px, 3vw, 40px);
+                  border-radius: 16px;
+                  margin-top: clamp(28px, 4vh, 40px);
+                "
+              >
+                <p
+                  style="
+                    margin: 0 0 18px;
+                    font-family: &quot;Spline Sans Mono&quot;, monospace;
+                    font-size: 12px;
+                    letter-spacing: 0.16em;
+                    text-transform: uppercase;
+                    color: rgba(250, 249, 245, 0.55);
+                  "
+                >
+                  My half of the CEO seat
+                </p>
+                <ul
+                  style="
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    display: flex;
+                    flex-direction: column;
+                  "
+                >
+                  <li
+                    style="
+                      padding: 14px 0;
+                      border-top: 1px solid rgba(250, 249, 245, 0.16);
+                      font-size: 16px;
+                    "
+                  >
+                    Defining product vision, strategy, and long-term roadmap
+                    across our platforms.
+                  </li>
+                  <li
+                    style="
+                      padding: 14px 0;
+                      border-top: 1px solid rgba(250, 249, 245, 0.16);
+                      font-size: 16px;
+                    "
+                  >
+                    Leading full-stack engineering — from architecture and
+                    backend systems to polished user experiences.
+                  </li>
+                  <li
+                    style="
+                      padding: 14px 0;
+                      border-top: 1px solid rgba(250, 249, 245, 0.16);
+                      font-size: 16px;
+                    "
+                  >
+                    Owning infrastructure, production releases, platform
+                    reliability, and delivering a seamless experience for every
+                    user.
+                  </li>
+                </ul>
+                <p
+                  style="
+                    margin: 22px 0 0;
+                    font-size: 14px;
+                    color: rgba(250, 249, 245, 0.6);
+                  "
+                >
+                  Co-founded and built with an
+                  <strong style="font-weight: 600; color: #faf9f5"
+                    >incredible team.</strong
+                  >
+                </p>
+              </div>
+            </div>
+            <div
+              data-reveal="true"
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: clamp(28px, 4vh, 40px);
+              "
+            >
+              <img
+                src="./images/Portfolio.png"
+                alt="Harishpranav R at work"
+                style="
+                  width: 100%;
+                  height: auto;
+                  aspect-ratio: 3/4;
+                  object-fit: cover;
+                  object-position: top center;
+                  border-radius: 16px;
+                  border: 1px solid rgba(250, 249, 245, 0.16);
+                "
+              />
+            </div>
+          </div>
+        </section>
+
+        <!-- ─────────── CAREERCRAFTAI — CASE STUDY ─────────── -->
+        <section
+          id="careercraft"
+          data-screen-label="CareerCraftAI"
+          style="
+            position: relative;
+            padding: clamp(64px, 11vh, 130px) clamp(20px, 6vw, 72px);
+          "
+        >
+          <p
+            data-reveal="true"
+            style="
+              margin: 0 0 16px;
+              font-family: &quot;Spline Sans Mono&quot;, monospace;
+              font-size: 13px;
+              letter-spacing: 0.16em;
+              text-transform: uppercase;
+              color: var(--accent);
+            "
+          >
+            02 — Flagship case study
+          </p>
+          <div
+            data-reveal="true"
+            style="
+              display: flex;
+              align-items: baseline;
+              gap: clamp(16px, 3vw, 40px);
+              flex-wrap: wrap;
+              margin-bottom: clamp(40px, 7vh, 72px);
+            "
+          >
+            <h2
+              style="
+                margin: 0;
+                font-family: &quot;Source Serif 4&quot;, serif;
+                font-weight: 500;
+                font-size: clamp(46px, 7.6vw, 116px);
+                line-height: 1;
+                letter-spacing: -0.015em;
+              "
+            >
+              CareerCraftAI
+            </h2>
+            <a
+              href="https://careercraftai.in"
+              target="_blank"
+              rel="noopener"
+              style="
+                font-family: &quot;Spline Sans Mono&quot;, monospace;
+                font-size: 14px;
+                letter-spacing: 0.1em;
+                color: #1f1d1a;
+                text-decoration: none;
+                border: 1px solid #1f1d1a;
+                padding: 8px 16px;
+                white-space: nowrap;
+                border-radius: 10px;
+              "
+              style-hover="background:#1F1D1A; color:#FAF9F5"
+              >careercraftai.in ↗</a
+            >
+          </div>
+
+          <div
+            data-reveal="true"
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+              gap: clamp(28px, 4vw, 64px);
+              margin-bottom: clamp(48px, 8vh, 88px);
+            "
+          >
+            <div>
+              <p
+                style="
+                  margin: 0 0 12px;
+                  font-family: &quot;Spline Sans Mono&quot;, monospace;
+                  font-size: 12px;
+                  letter-spacing: 0.16em;
+                  text-transform: uppercase;
+                  color: rgba(31, 29, 26, 0.55);
+                "
+              >
+                The problem
+              </p>
+              <p
+                style="
+                  margin: 0;
+                  font-size: 16px;
+                  color: rgba(31, 29, 26, 0.82);
+                "
+              >
+                India adds millions of freshers to the job market every year,
+                and most get the same three pieces of advice: do certifications,
+                fix your LinkedIn, keep applying. Generic guidance at national
+                scale. Meanwhile employers drown in identical résumés. Both
+                sides lose.
+              </p>
+            </div>
+            <div>
+              <p
+                style="
+                  margin: 0 0 12px;
+                  font-family: &quot;Spline Sans Mono&quot;, monospace;
+                  font-size: 12px;
+                  letter-spacing: 0.16em;
+                  text-transform: uppercase;
+                  color: rgba(31, 29, 26, 0.55);
+                "
+              >
+                The build
+              </p>
+              <p
+                style="
+                  margin: 0;
+                  font-size: 16px;
+                  color: rgba(31, 29, 26, 0.82);
+                "
+              >
+                An AI-powered career platform that treats a fresher as a person,
+                not a keyword — guidance, preparation and matching for students,
+                freshers and employers. Next.js and React up front, Node and
+                Express behind it, PostgreSQL through Prisma, Claude and GPT
+                doing the reasoning.
+              </p>
+            </div>
+            <div>
+              <p
+                style="
+                  margin: 0 0 12px;
+                  font-family: &quot;Spline Sans Mono&quot;, monospace;
+                  font-size: 12px;
+                  letter-spacing: 0.16em;
+                  text-transform: uppercase;
+                  color: rgba(31, 29, 26, 0.55);
+                "
+              >
+                Where it stands
+              </p>
+              <p
+                style="
+                  margin: 0;
+                  font-size: 16px;
+                  color: rgba(31, 29, 26, 0.82);
+                "
+              >
+                Live in production at careercraftai.in, serving all three sides
+                of the market. The numbers change weekly — mail me for the
+                current ones. I'd rather tell you the truth on the day you ask
+                than print a stale stat here.
+              </p>
+            </div>
+          </div>
+
+          <blockquote
+            data-reveal="true"
+            style="
+              margin: 0 0 clamp(48px, 8vh, 88px);
+              max-width: 26ch;
+              font-family: &quot;Source Serif 4&quot;, serif;
+              font-size: clamp(28px, 3.6vw, 52px);
+              line-height: 1.15;
+              color: var(--accent);
+            "
+          >
+            "The hard part wasn't the AI. It was making AI output feel
+            trustworthy to a 21-year-old betting their first job on it."
+          </blockquote>
+
+          <div data-reveal="true" style="position: relative; max-width: 1100px">
+            <img
+              src="./images/careercraft.png"
+              alt="CareerCraftAI — dashboard screenshot"
+              style="
+                width: 100%;
+                height: auto;
+                aspect-ratio: 16/9;
+                display: block;
+                border: 1px solid rgba(31, 29, 26, 0.25);
+                border-radius: 16px;
+                object-fit: cover;
+              "
+            />
+            <img
+              src="./images/Duostack.jpeg"
+              alt="DuoStack logo"
+              style="
+                width: min(280px, 38%);
+                height: auto;
+                aspect-ratio: 4/3;
+                object-fit: contain;
+                display: block;
+                position: absolute;
+                right: clamp(8px, 3vw, 48px);
+                bottom: -40px;
+                transform: rotate(-2deg);
+                box-shadow: 0 24px 60px rgba(31, 29, 26, 0.18);
+                background: #1f1d1a;
+                border-radius: 16px;
+                padding: 24px;
+              "
+            />
+          </div>
+          <div style="height: 72px"></div>
+        </section>
+
+        <!-- ─────────── OTHER WORK ─────────── -->
+        <section
+          data-screen-label="Other work"
+          style="
+            background: #f0eee6;
+            border-top: 1px solid #1f1d1a;
+            padding: clamp(64px, 11vh, 130px) clamp(20px, 6vw, 72px);
+          "
+        >
+          <p
+            data-reveal="true"
+            style="
+              margin: 0 0 clamp(36px, 6vh, 64px);
+              font-family: &quot;Spline Sans Mono&quot;, monospace;
+              font-size: 13px;
+              letter-spacing: 0.16em;
+              text-transform: uppercase;
+              color: var(--accent);
+            "
+          >
+            03 — Also shipped
+          </p>
+
+          <article
+            data-reveal="true"
+            style="
+              display: grid;
+              grid-template-columns: minmax(80px, 0.22fr) minmax(280px, 1fr);
+              gap: clamp(16px, 4vw, 64px);
+              padding: clamp(28px, 4vh, 44px) 0;
+              border-top: 1px solid rgba(31, 29, 26, 0.35);
+              align-items: start;
+            "
+          >
+            <div
+              aria-hidden="true"
+              style="
+                font-family: &quot;Source Serif 4&quot;, serif;
+                font-size: clamp(48px, 7vw, 110px);
+                line-height: 0.9;
+                color: transparent;
+                -webkit-text-stroke: 1px rgba(31, 29, 26, 0.4);
+              "
+            >
+              GA
+            </div>
+            <div>
+              <h3
+                style="
+                  margin: 0 0 10px;
+                  font-family: &quot;Source Serif 4&quot;, serif;
+                  font-weight: 500;
+                  font-size: clamp(28px, 3.4vw, 48px);
+                  line-height: 1.1;
+                "
+              >
+                General-Agent
+              </h3>
+              <p
+                style="
+                  margin: 0 0 14px;
+                  max-width: 58ch;
+                  font-size: 16px;
+                  color: rgba(31, 29, 26, 0.82);
+                "
+              >
+                A multi-agent AI system where Claude instances plan, delegate
+                and execute instead of answering one prompt at a time. Built to
+                answer a question I kept circling: how far can orchestration go
+                before it genuinely needs a human? Further than I expected — and
+                the interesting failures taught me more than the successes.
+              </p>
+              <p
+                style="
+                  margin: 0;
+                  font-family: &quot;Spline Sans Mono&quot;, monospace;
+                  font-size: 13px;
+                  letter-spacing: 0.08em;
+                  color: rgba(31, 29, 26, 0.6);
+                "
+              >
+                Claude · React · Node.js · FastAPI
+              </p>
+            </div>
+          </article>
+
+          <article
+            data-reveal="true"
+            style="
+              display: grid;
+              grid-template-columns: minmax(80px, 0.22fr) minmax(280px, 1fr);
+              gap: clamp(16px, 4vw, 64px);
+              padding: clamp(28px, 4vh, 44px) 0;
+              border-top: 1px solid rgba(31, 29, 26, 0.35);
+              border-bottom: 1px solid rgba(31, 29, 26, 0.35);
+              align-items: start;
+              margin-left: clamp(0px, 6vw, 96px);
+            "
+          >
+            <div
+              aria-hidden="true"
+              style="
+                font-family: &quot;Source Serif 4&quot;, serif;
+                font-size: clamp(48px, 7vw, 110px);
+                line-height: 0.9;
+                color: transparent;
+                -webkit-text-stroke: 1px rgba(31, 29, 26, 0.4);
+              "
+            >
+              CG
+            </div>
+            <div>
+              <h3
+                style="
+                  margin: 0 0 10px;
+                  font-family: &quot;Source Serif 4&quot;, serif;
+                  font-weight: 500;
+                  font-size: clamp(28px, 3.4vw, 48px);
+                  line-height: 1.1;
+                "
+              >
+                ChargeGuard
+              </h3>
+              <p
+                style="
+                  margin: 0 0 14px;
+                  max-width: 58ch;
+                  font-size: 16px;
+                  color: rgba(31, 29, 26, 0.82);
+                "
+              >
+                A native Android app that watches your phone's charging so you
+                don't have to. Small scope, done properly, shipped. Not
+                everything needs to be a platform — some things just need to
+                work every single day.
+              </p>
+              <p
+                style="
+                  margin: 0;
+                  font-family: &quot;Spline Sans Mono&quot;, monospace;
+                  font-size: 13px;
+                  letter-spacing: 0.08em;
+                  color: rgba(31, 29, 26, 0.6);
+                "
+              >
+                Kotlin · Android
+              </p>
+            </div>
+          </article>
+        </section>
+
+        <!-- ─────────── CRAFT ─────────── -->
+        <section
+          id="craft"
+          data-screen-label="Craft"
+          style="padding: clamp(64px, 11vh, 130px) clamp(20px, 6vw, 72px)"
+        >
+          <p
+            data-reveal="true"
+            style="
+              margin: 0 0 16px;
+              font-family: &quot;Spline Sans Mono&quot;, monospace;
+              font-size: 13px;
+              letter-spacing: 0.16em;
+              text-transform: uppercase;
+              color: var(--accent);
+            "
+          >
+            04 — How I actually work
+          </p>
+          <h2
+            data-reveal="true"
+            style="
+              margin: 0 0 clamp(40px, 7vh, 72px);
+              font-family: &quot;Source Serif 4&quot;, serif;
+              font-weight: 500;
+              font-size: clamp(36px, 5vw, 72px);
+              line-height: 1.05;
+              max-width: 20ch;
+            "
+          >
+            Three rules I keep re-learning on purpose.
+          </h2>
+
+          <div
+            data-reveal="true"
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+              gap: clamp(24px, 3.5vw, 56px);
+              margin-bottom: clamp(56px, 9vh, 100px);
+            "
+          >
+            <div style="border-top: 3px solid var(--accent); padding-top: 20px">
+              <h3
+                style="
+                  margin: 0 0 10px;
+                  font-family: &quot;Source Serif 4&quot;, serif;
+                  font-weight: 500;
+                  font-size: 24px;
+                "
+              >
+                Problem first, stack second.
+              </h3>
+              <p
+                style="
+                  margin: 0;
+                  font-size: 15.5px;
+                  color: rgba(31, 29, 26, 0.78);
+                "
+              >
+                I don't pick a technology and hunt for uses. I find the thing
+                people tolerate because "that's just how it is" — then build the
+                fix.
+              </p>
+            </div>
+            <div style="border-top: 3px solid var(--accent); padding-top: 20px">
+              <h3
+                style="
+                  margin: 0 0 10px;
+                  font-family: &quot;Source Serif 4&quot;, serif;
+                  font-weight: 500;
+                  font-size: 24px;
+                "
+              >
+                AI-native, not AI-dependent.
+              </h3>
+              <p
+                style="
+                  margin: 0;
+                  font-size: 15.5px;
+                  color: rgba(31, 29, 26, 0.78);
+                "
+              >
+                Claude, GPT and Gemini sit inside both my workflow and my
+                products. The judgment about what actually ships stays mine.
+              </p>
+            </div>
+            <div style="border-top: 3px solid var(--accent); padding-top: 20px">
+              <h3
+                style="
+                  margin: 0 0 10px;
+                  font-family: &quot;Source Serif 4&quot;, serif;
+                  font-weight: 500;
+                  font-size: 24px;
+                "
+              >
+                Ship, then sharpen.
+              </h3>
+              <p
+                style="
+                  margin: 0;
+                  font-size: 15.5px;
+                  color: rgba(31, 29, 26, 0.78);
+                "
+              >
+                One real user on version one teaches more than a month of
+                polishing version zero. Production is the honest reviewer.
+              </p>
+            </div>
+          </div>
+
+          <div data-reveal="true">
+            <div
+              style="
+                display: grid;
+                grid-template-columns: minmax(90px, 0.25fr) 1fr;
+                gap: 20px;
+                padding: 16px 0;
+                border-top: 1px solid rgba(31, 29, 26, 0.14);
+                align-items: baseline;
+              "
+            >
+              <span
+                style="
+                  font-family: &quot;Spline Sans Mono&quot;, monospace;
+                  font-size: 12px;
+                  letter-spacing: 0.16em;
+                  text-transform: uppercase;
+                  color: rgba(31, 29, 26, 0.55);
+                "
+                >Front</span
+              >
+              <span
+                style="
+                  font-family: &quot;Source Serif 4&quot;, serif;
+                  font-size: clamp(20px, 2.4vw, 32px);
+                "
+                >React · Next.js</span
+              >
+            </div>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: minmax(90px, 0.25fr) 1fr;
+                gap: 20px;
+                padding: 16px 0;
+                border-top: 1px solid rgba(31, 29, 26, 0.14);
+                align-items: baseline;
+              "
+            >
+              <span
+                style="
+                  font-family: &quot;Spline Sans Mono&quot;, monospace;
+                  font-size: 12px;
+                  letter-spacing: 0.16em;
+                  text-transform: uppercase;
+                  color: rgba(31, 29, 26, 0.55);
+                "
+                >Server</span
+              >
+              <span
+                style="
+                  font-family: &quot;Source Serif 4&quot;, serif;
+                  font-size: clamp(20px, 2.4vw, 32px);
+                "
+                >Node.js · Express</span
+              >
+            </div>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: minmax(90px, 0.25fr) 1fr;
+                gap: 20px;
+                padding: 16px 0;
+                border-top: 1px solid rgba(31, 29, 26, 0.14);
+                align-items: baseline;
+              "
+            >
+              <span
+                style="
+                  font-family: &quot;Spline Sans Mono&quot;, monospace;
+                  font-size: 12px;
+                  letter-spacing: 0.16em;
+                  text-transform: uppercase;
+                  color: rgba(31, 29, 26, 0.55);
+                "
+                >Data</span
+              >
+              <span
+                style="
+                  font-family: &quot;Source Serif 4&quot;, serif;
+                  font-size: clamp(20px, 2.4vw, 32px);
+                "
+                >PostgreSQL · MongoDB · Prisma</span
+              >
+            </div>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: minmax(90px, 0.25fr) 1fr;
+                gap: 20px;
+                padding: 16px 0;
+                border-top: 1px solid rgba(31, 29, 26, 0.14);
+                align-items: baseline;
+              "
+            >
+              <span
+                style="
+                  font-family: &quot;Spline Sans Mono&quot;, monospace;
+                  font-size: 12px;
+                  letter-spacing: 0.16em;
+                  text-transform: uppercase;
+                  color: rgba(31, 29, 26, 0.55);
+                "
+                >AI</span
+              >
+              <span
+                style="
+                  font-family: &quot;Source Serif 4&quot;, serif;
+                  font-size: clamp(20px, 2.4vw, 32px);
+                "
+                >Claude · GPT · Gemini</span
+              >
+            </div>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: minmax(90px, 0.25fr) 1fr;
+                gap: 20px;
+                padding: 16px 0;
+                border-top: 1px solid rgba(31, 29, 26, 0.14);
+                border-bottom: 1px solid rgba(31, 29, 26, 0.14);
+                align-items: baseline;
+              "
+            >
+              <span
+                style="
+                  font-family: &quot;Spline Sans Mono&quot;, monospace;
+                  font-size: 12px;
+                  letter-spacing: 0.16em;
+                  text-transform: uppercase;
+                  color: rgba(31, 29, 26, 0.55);
+                "
+                >Also</span
+              >
+              <span
+                style="
+                  font-family: &quot;Source Serif 4&quot;, serif;
+                  font-size: clamp(20px, 2.4vw, 32px);
+                "
+                >Kotlin (Android) · FastAPI</span
+              >
+            </div>
+          </div>
+
+          <p
+            data-reveal="true"
+            style="
+              margin: clamp(32px, 5vh, 48px) 0 0;
+              max-width: 60ch;
+              font-size: 15.5px;
+              color: rgba(31, 29, 26, 0.65);
+            "
+          >
+            Off the clock: cricket, video games, and any strategy game with a
+            tech tree. I like planning ten turns ahead. It shows.
+          </p>
+        </section>
+
+        <!-- ─────────── CRICKET ─────────── -->
+        <section
+          data-screen-label="Cricket"
+          style="
+            background: #f0eee6;
+            border-top: 1px solid #1f1d1a;
+            padding: clamp(64px, 11vh, 130px) clamp(20px, 6vw, 72px);
+          "
+        >
+          <p
+            data-reveal="true"
+            style="
+              margin: 0 0 16px;
+              font-family: &quot;Spline Sans Mono&quot;, monospace;
+              font-size: 13px;
+              letter-spacing: 0.16em;
+              text-transform: uppercase;
+              color: var(--accent);
+            "
+          >
+            06 — Beyond the terminal
+          </p>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+              gap: clamp(32px, 5vw, 80px);
+              align-items: start;
+            "
+          >
+            <div data-reveal="true">
+              <h2
+                style="
+                  margin: 0 0 clamp(20px, 3vh, 32px);
+                  font-family: &quot;Source Serif 4&quot;, serif;
+                  font-weight: 500;
+                  font-size: clamp(38px, 5vw, 72px);
+                  line-height: 1.04;
+                  letter-spacing: -0.01em;
+                "
+              >
+                Cricket is the other thing I put 200% into.
+              </h2>
+              <p
+                style="
+                  margin: 0 0 18px;
+                  font-size: clamp(16px, 1.35vw, 19px);
+                  color: rgba(31, 29, 26, 0.82);
+                  max-width: 52ch;
+                "
+              >
+                I'm a batting all-rounder. Selected for the
+                <strong style="font-weight: 600">Under-16 district team</strong>
+                — not as a formality, as someone who earned the seat the same
+                way I earn anything: by showing up and being better prepared
+                than expected.
+              </p>
+              <p
+                style="
+                  margin: 0;
+                  font-size: clamp(16px, 1.35vw, 19px);
+                  color: rgba(31, 29, 26, 0.72);
+                  max-width: 52ch;
+                "
+              >
+                The overlap with how I build software isn't metaphorical.
+                Reading a pitch, adjusting mid-over, knowing when to defend and
+                when to attack — it's the same mental model I use in production.
+                Strategy games trained the same muscle. Cricket made it
+                instinctive.
+              </p>
+            </div>
+            <div
+              data-reveal="true"
+              style="display: flex; flex-direction: column; gap: 20px"
+            >
+              <div
+                style="border-top: 3px solid var(--accent); padding-top: 20px"
+              >
+                <p
+                  style="
+                    margin: 0 0 6px;
+                    font-family: &quot;Spline Sans Mono&quot;, monospace;
+                    font-size: 12px;
+                    letter-spacing: 0.16em;
+                    text-transform: uppercase;
+                    color: rgba(31, 29, 26, 0.55);
+                  "
+                >
+                  Role
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-family: &quot;Source Serif 4&quot;, serif;
+                    font-size: clamp(22px, 2.6vw, 36px);
+                  "
+                >
+                  Batting all-rounder
+                </p>
+              </div>
+              <div
+                style="
+                  border-top: 1px solid rgba(31, 29, 26, 0.2);
+                  padding-top: 20px;
+                "
+              >
+                <p
+                  style="
+                    margin: 0 0 6px;
+                    font-family: &quot;Spline Sans Mono&quot;, monospace;
+                    font-size: 12px;
+                    letter-spacing: 0.16em;
+                    text-transform: uppercase;
+                    color: rgba(31, 29, 26, 0.55);
+                  "
+                >
+                  Achievement
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-family: &quot;Source Serif 4&quot;, serif;
+                    font-size: clamp(22px, 2.6vw, 36px);
+                  "
+                >
+                  Selected — U16 District
+                </p>
+              </div>
+              <div
+                style="
+                  border-top: 1px solid rgba(31, 29, 26, 0.2);
+                  padding-top: 20px;
+                "
+              >
+                <p
+                  style="
+                    margin: 0 0 6px;
+                    font-family: &quot;Spline Sans Mono&quot;, monospace;
+                    font-size: 12px;
+                    letter-spacing: 0.16em;
+                    text-transform: uppercase;
+                    color: rgba(31, 29, 26, 0.55);
+                  "
+                >
+                  Also plays
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-family: &quot;Source Serif 4&quot;, serif;
+                    font-size: clamp(22px, 2.6vw, 36px);
+                  "
+                >
+                  Strategy games · Video games
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─────────── CONTACT ─────────── -->
+        <section
+          id="contact"
+          data-screen-label="Contact"
+          style="
+            background: #1f1d1a;
+            color: #faf9f5;
+            padding: clamp(64px, 12vh, 140px) clamp(20px, 6vw, 72px)
+              clamp(40px, 6vh, 64px);
+          "
+        >
+          <p
+            data-reveal="true"
+            style="
+              margin: 0 0 16px;
+              font-family: &quot;Spline Sans Mono&quot;, monospace;
+              font-size: 13px;
+              letter-spacing: 0.16em;
+              text-transform: uppercase;
+              color: var(--accent);
+            "
+          >
+            05 — Say vanakkam
+          </p>
+          <h2
+            data-reveal="true"
+            style="
+              margin: 0 0 clamp(32px, 5vh, 56px);
+              font-family: &quot;Source Serif 4&quot;, serif;
+              font-weight: 500;
+              font-size: clamp(34px, 4.6vw, 68px);
+              line-height: 1.05;
+              max-width: 20ch;
+            "
+          >
+            The form is that there's no form.
+          </h2>
+
+          <a
+            data-reveal="true"
+            href="/cdn-cgi/l/email-protection#412920332832293133202f20376f362e332a01262c20282d6f222e2c"
+            style="
+              display: block;
+              font-family: &quot;Source Serif 4&quot;, serif;
+              font-size: clamp(24px, 4.8vw, 72px);
+              line-height: 1.1;
+              color: #faf9f5;
+              text-decoration: none;
+              overflow-wrap: anywhere;
+              border-bottom: 2px solid var(--accent);
+              padding-bottom: clamp(12px, 2vh, 24px);
+              margin-bottom: clamp(36px, 6vh, 60px);
+              max-width: max-content;
+            "
+            style-hover="color:var(--accent)"
+            ><span
+              class="__cf_email__"
+              data-cfemail="c0a8a1b2a9b3a8b0b2a1aea1b6eeb7afb2ab80a7ada1a9aceea3afad"
+              >[email&#160;protected]</span
+            ></a
+          >
+
+          <div
+            data-reveal="true"
+            style="
+              display: flex;
+              gap: clamp(20px, 4vw, 48px);
+              flex-wrap: wrap;
+              margin-bottom: clamp(48px, 8vh, 80px);
+            "
+          >
+            <a
+              href="https://www.instagram.com/harishpranav__/"
+              target="_blank"
+              rel="noopener"
+              style="
+                font-family: &quot;Spline Sans Mono&quot;, monospace;
+                font-size: 13px;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: rgba(250, 249, 245, 0.75);
+                text-decoration: none;
+              "
+              style-hover="color:var(--accent)"
+              >Instagram — @harishpranav__ ↗</a
+            >
+            <a
+              href="https://www.linkedin.com/in/harishpranav-r-209723308/"
+              target="_blank"
+              rel="noopener"
+              style="
+                font-family: &quot;Spline Sans Mono&quot;, monospace;
+                font-size: 13px;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: rgba(250, 249, 245, 0.75);
+                text-decoration: none;
+              "
+              style-hover="color:var(--accent)"
+              >LinkedIn — Harishpranav R ↗</a
+            >
+            <a
+              href="https://github.com/harishpranav-dev"
+              target="_blank"
+              rel="noopener"
+              style="
+                font-family: &quot;Spline Sans Mono&quot;, monospace;
+                font-size: 13px;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: rgba(250, 249, 245, 0.75);
+                text-decoration: none;
+              "
+              style-hover="color:var(--accent)"
+              >GitHub — harishpranav-dev ↗</a
+            >
+          </div>
+
+          <p
+            data-reveal="true"
+            style="
+              margin: 0 0 clamp(48px, 8vh, 80px);
+              max-width: 52ch;
+              font-size: 15px;
+              color: rgba(250, 249, 245, 0.6);
+            "
+          >
+            Fastest reply: email. Second fastest: Instagram DM. You can also
+            reach out about cricket. If you're building something and need a
+            techy co-builder — contact me.
+          </p>
+
+          <footer
+            style="
+              display: flex;
+              justify-content: space-between;
+              gap: 20px;
+              flex-wrap: wrap;
+              border-top: 1px solid rgba(250, 249, 245, 0.16);
+              padding-top: 24px;
+            "
+          >
+            <span
+              style="
+                font-family: &quot;Spline Sans Mono&quot;, monospace;
+                font-size: 12px;
+                letter-spacing: 0.1em;
+                color: rgba(250, 249, 245, 0.45);
+              "
+              >© 2026 Harishpranav R — Duo_Stack</span
+            >
+            <span
+              style="
+                font-family: &quot;Spline Sans Mono&quot;, monospace;
+                font-size: 12px;
+                letter-spacing: 0.1em;
+                color: rgba(250, 249, 245, 0.45);
+              "
+              >Feel free to reach out!</span
+            >
+          </footer>
+        </section>
       </div>
-    </div>
+    </x-dc>
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script
+      type="text/x-dc"
+      data-dc-script
+      data-props='{
+  "accent": { "editor": "color", "default": "#3E5C46", "options": ["#3E5C46", "#D97757", "#B04A2F", "#7A2E35"], "tsType": "string", "section": "Theme" },
+  "showMarquee": { "editor": "boolean", "default": true, "tsType": "boolean", "section": "Theme" }
+}'
+    >
+      class Component extends DCLogic {
+        componentDidMount() {
+          this.applyAccent();
+          const els = document.querySelectorAll('[data-reveal]');
+          const io = new IntersectionObserver((entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.style.opacity = '1';
+                e.target.style.transform = 'none';
+                io.unobserve(e.target);
+              }
+            }
+          }, { threshold: 0.12 });
+          els.forEach((el) => {
+            const r = el.getBoundingClientRect();
+            if (r.top < window.innerHeight * 0.92) return;
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(26px)';
+            el.style.transition = 'opacity 0.8s cubic-bezier(.2,.6,.2,1), transform 0.8s cubic-bezier(.2,.6,.2,1)';
+            io.observe(el);
+          });
+          this._io = io;
+        }
 
-    <!-- About me brief + info box side by side -->
-    <div style="display:grid; grid-template-columns:1fr minmax(280px,0.45fr); gap:clamp(32px,5vw,64px); align-items:start; margin-top:clamp(72px,14vh,140px); padding-bottom:clamp(40px,7vh,72px)">
-      <div>
-        <p style="margin:0 0 18px; font-size:clamp(16px,1.25vw,19px); color:rgba(31,29,26,0.88); max-width:55ch; line-height:1.7">
-          I'm <strong style="font-weight:600">Harishpranav&nbsp;R</strong>, a self-taught full-stack developer from Tamil Nadu, India. Most people my age are collecting certifications. I'm collecting production deploys.
-        </p>
-        <p style="margin:0 0 18px; font-size:clamp(15px,1.2vw,18px); color:rgba(31,29,26,0.78); max-width:55ch; line-height:1.7">
-          As the Co-Founder of <strong style="font-weight:600">DuoStack</strong>, I work with an incredible team to build technology products that deliver real value. Today, our flagship platform, <a href="https://careercraftai.in" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent)">CareerCraftAI</a>, is live in production, serving real users with a focus on quality, reliability, and innovation.
-        </p>
-        <p style="margin:0; font-size:clamp(15px,1.2vw,18px); color:rgba(31,29,26,0.68); max-width:55ch; line-height:1.7">
-          The B.Sc in Computer Science is happening in parallel. The shipping never stopped for it.
-        </p>
-      </div>
-      <dl style="margin:0; width:100%">
-        <div style="display:flex; justify-content:space-between; gap:20px; padding:12px 0; border-top:1px solid rgba(31,29,26,0.14)">
-          <dt style="font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(31,29,26,0.55)">Now</dt>
-          <dd style="margin:0; font-size:15px; text-align:right">Co-founder &amp; CEO, DuoStack</dd>
-        </div>
-        <div style="display:flex; justify-content:space-between; gap:20px; padding:12px 0; border-top:1px solid rgba(31,29,26,0.14)">
-          <dt style="font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(31,29,26,0.55)">Flagship</dt>
-          <dd style="margin:0; font-size:15px; text-align:right"><a href="https://careercraftai.in" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent)">careercraftai.in</a></dd>
-        </div>
-        <div style="display:flex; justify-content:space-between; gap:20px; padding:12px 0; border-top:1px solid rgba(31,29,26,0.14)">
-          <dt style="font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(31,29,26,0.55)">Studying</dt>
-          <dd style="margin:0; font-size:15px; text-align:right">B.Sc Computer Science</dd>
-        </div>
-        <div style="display:flex; justify-content:space-between; gap:20px; padding:12px 0; border-top:1px solid rgba(31,29,26,0.14); border-bottom:1px solid rgba(31,29,26,0.14)">
-          <dt style="font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(31,29,26,0.55)">Handle</dt>
-          <dd style="margin:0; font-size:15px; text-align:right">Duo_Stack</dd>
-        </div>
-      </dl>
-    </div>
+        componentWillUnmount() {
+          if (this._io) this._io.disconnect();
+        }
 
-    <div aria-hidden="true" style="font-family:'Source Serif 4',serif; font-size:clamp(60px,11vw,170px); line-height:0.72; letter-spacing:0.02em; color:transparent; -webkit-text-stroke:1px rgba(31,29,26,0.22); white-space:nowrap; animation:heroPulse 4s ease-in-out infinite; user-select:none; pointer-events:none; margin:0 calc(-1 * clamp(20px,6vw,72px)) -0.06em; overflow:hidden">HP</div>
-  </section>
+        componentDidUpdate() {
+          this.applyAccent();
+        }
 
-  <!-- ─────────── MARQUEE ─────────── -->
-  <sc-if value="{{ showMarquee }}" hint-placeholder-val="{{ true }}">
-    <div data-screen-label="Marquee" style="border-top:1px solid #1F1D1A; border-bottom:1px solid #1F1D1A; background:#F0EEE6; overflow:hidden; padding:14px 0">
-      <div style="display:flex; width:max-content; animation:mq 26s linear infinite">
-        <span style="font-family:'Spline Sans Mono',monospace; font-size:14px; letter-spacing:0.18em; text-transform:uppercase; white-space:nowrap; padding-right:48px">Harishpranav R · Duo_Stack · careercraftai.in · shipped &gt; perfect · React / Next.js / Node / Postgres · AI in the loop · Tamil Nadu → everywhere ·&nbsp;</span>
-        <span style="font-family:'Spline Sans Mono',monospace; font-size:14px; letter-spacing:0.18em; text-transform:uppercase; white-space:nowrap; padding-right:48px">Harishpranav R · Duo_Stack · careercraftai.in · shipped &gt; perfect · React / Next.js / Node / Postgres · AI in the loop · Tamil Nadu → everywhere ·&nbsp;</span>
-      </div>
-    </div>
-  </sc-if>
+        applyAccent() {
+          document.body.style.setProperty('--accent', this.props.accent ?? '#3E5C46');
+        }
 
-  <!-- ─────────── DUOSTACK — INK BAND ─────────── -->
-  <section id="duostack" data-screen-label="DuoStack" style="position:relative; background:#1F1D1A; color:#FAF9F5; padding:clamp(64px,11vh,130px) clamp(20px,6vw,72px); overflow:hidden">
-    <div aria-hidden="true" style="position:absolute; top:-0.08em; right:-0.04em; font-family:'Source Serif 4',serif; font-size:clamp(120px,22vw,340px); line-height:1; color:transparent; -webkit-text-stroke:1px rgba(250,249,245,0.14); user-select:none; pointer-events:none">01</div>
-    <p data-reveal="true" style="margin:0 0 20px; font-family:'Spline Sans Mono',monospace; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent)">01 — Present tense</p>
-    <h2 data-reveal="true" style="margin:0 0 clamp(36px,6vh,64px); font-family:'Source Serif 4',serif; font-weight:500; font-size:clamp(38px,5.6vw,84px); line-height:1.04; letter-spacing:-0.01em; max-width:18ch">
-      DuoStack isn't a line on my résumé. It's my calendar.
-    </h2>
-
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:clamp(32px,5vw,88px); align-items:start">
-      <div data-reveal="true">
-        <p style="margin:0 0 22px; font-size:clamp(17px,1.35vw,19px); color:rgba(250,249,245,0.85); max-width:55ch">
-          In Tamil Nadu, a tech side usually means joining a service company and maintaining someone else's product. Me and my team wanted the other seat — the one that decides <em>what</em> gets built. So we made it ourselves.
-        </p>
-        <p style="margin:0 0 34px; font-size:clamp(17px,1.35vw,19px); color:rgba(250,249,245,0.85); max-width:55ch">
-          DuoStack is a technology startup where every product is built with ownership and purpose. Every idea, every line of code, and every user experience is our responsibility. As a team, we collaborate to make strategic decisions, solve complex problems, and continuously improve our products.
-        </p>
-        <a href="https://www.instagram.com/duostack_official" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:12px; padding:14px 24px; background:var(--accent); color:#FAF9F5; text-decoration:none; font-family:'Spline Sans Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; border-radius:10px" style-hover="background:#FAF9F5; color:#1F1D1A">Follow the build — @duostack_official ↗</a>
-        <div style="border:1px solid rgba(250,249,245,0.22); padding:clamp(24px,3vw,40px); border-radius:16px; margin-top:clamp(28px,4vh,40px)">
-          <p style="margin:0 0 18px; font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(250,249,245,0.55)">My half of the CEO seat</p>
-          <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column">
-            <li style="padding:14px 0; border-top:1px solid rgba(250,249,245,0.16); font-size:16px">Defining product vision, strategy, and long-term roadmap across our platforms.</li>
-            <li style="padding:14px 0; border-top:1px solid rgba(250,249,245,0.16); font-size:16px">Leading full-stack engineering — from architecture and backend systems to polished user experiences.</li>
-            <li style="padding:14px 0; border-top:1px solid rgba(250,249,245,0.16); font-size:16px">Owning infrastructure, production releases, platform reliability, and delivering a seamless experience for every user.</li>
-          </ul>
-          <p style="margin:22px 0 0; font-size:14px; color:rgba(250,249,245,0.6)">Co-founded and built with an <strong style="font-weight:600; color:#FAF9F5">incredible team.</strong></p>
-        </div>
-      </div>
-      <div data-reveal="true" style="display:flex; flex-direction:column; gap:clamp(28px,4vh,40px)">
-        <img src="./images/Portfolio.png" alt="Harishpranav R at work" style="width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; object-position:top center; border-radius:16px; border:1px solid rgba(250,249,245,0.16)">
-      </div>
-    </div>
-  </section>
-
-  <!-- ─────────── CAREERCRAFTAI — CASE STUDY ─────────── -->
-  <section id="careercraft" data-screen-label="CareerCraftAI" style="position:relative; padding:clamp(64px,11vh,130px) clamp(20px,6vw,72px)">
-    <p data-reveal="true" style="margin:0 0 16px; font-family:'Spline Sans Mono',monospace; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent)">02 — Flagship case study</p>
-    <div data-reveal="true" style="display:flex; align-items:baseline; gap:clamp(16px,3vw,40px); flex-wrap:wrap; margin-bottom:clamp(40px,7vh,72px)">
-      <h2 style="margin:0; font-family:'Source Serif 4',serif; font-weight:500; font-size:clamp(46px,7.6vw,116px); line-height:1; letter-spacing:-0.015em">CareerCraftAI</h2>
-      <a href="https://careercraftai.in" target="_blank" rel="noopener" style="font-family:'Spline Sans Mono',monospace; font-size:14px; letter-spacing:0.1em; color:#1F1D1A; text-decoration:none; border:1px solid #1F1D1A; padding:8px 16px; white-space:nowrap; border-radius:10px" style-hover="background:#1F1D1A; color:#FAF9F5">careercraftai.in ↗</a>
-    </div>
-
-    <div data-reveal="true" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(28px,4vw,64px); margin-bottom:clamp(48px,8vh,88px)">
-      <div>
-        <p style="margin:0 0 12px; font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(31,29,26,0.55)">The problem</p>
-        <p style="margin:0; font-size:16px; color:rgba(31,29,26,0.82)">India adds millions of freshers to the job market every year, and most get the same three pieces of advice: do certifications, fix your LinkedIn, keep applying. Generic guidance at national scale. Meanwhile employers drown in identical résumés. Both sides lose.</p>
-      </div>
-      <div>
-        <p style="margin:0 0 12px; font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(31,29,26,0.55)">The build</p>
-        <p style="margin:0; font-size:16px; color:rgba(31,29,26,0.82)">An AI-powered career platform that treats a fresher as a person, not a keyword — guidance, preparation and matching for students, freshers and employers. Next.js and React up front, Node and Express behind it, PostgreSQL through Prisma, Claude and GPT doing the reasoning.</p>
-      </div>
-      <div>
-        <p style="margin:0 0 12px; font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(31,29,26,0.55)">Where it stands</p>
-        <p style="margin:0; font-size:16px; color:rgba(31,29,26,0.82)">Live in production at careercraftai.in, serving all three sides of the market. The numbers change weekly — mail me for the current ones. I'd rather tell you the truth on the day you ask than print a stale stat here.</p>
-      </div>
-    </div>
-
-    <blockquote data-reveal="true" style="margin:0 0 clamp(48px,8vh,88px); max-width:26ch; font-family:'Source Serif 4',serif; font-size:clamp(28px,3.6vw,52px); line-height:1.15; color:var(--accent)">
-      "The hard part wasn't the AI. It was making AI output feel trustworthy to a 21-year-old betting their first job on it."
-    </blockquote>
-
-    <div data-reveal="true" style="position:relative; max-width:1100px">
-      <img src="./images/careercraft.png" alt="CareerCraftAI — dashboard screenshot" style="width:100%; height:auto; aspect-ratio:16/9; display:block; border:1px solid rgba(31,29,26,0.25); border-radius:16px; object-fit:cover">
-      <img src="./images/Duostack.jpeg" alt="DuoStack logo" style="width:min(280px,38%); height:auto; aspect-ratio:4/3; object-fit:contain; display:block; position:absolute; right:clamp(8px,3vw,48px); bottom:-40px; transform:rotate(-2deg); box-shadow:0 24px 60px rgba(31,29,26,0.18); background:#1F1D1A; border-radius:16px; padding:24px">
-    </div>
-    <div style="height:72px"></div>
-  </section>
-
-  <!-- ─────────── OTHER WORK ─────────── -->
-  <section data-screen-label="Other work" style="background:#F0EEE6; border-top:1px solid #1F1D1A; padding:clamp(64px,11vh,130px) clamp(20px,6vw,72px)">
-    <p data-reveal="true" style="margin:0 0 clamp(36px,6vh,64px); font-family:'Spline Sans Mono',monospace; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent)">03 — Also shipped</p>
-
-    <article data-reveal="true" style="display:grid; grid-template-columns:minmax(80px,0.22fr) minmax(280px,1fr); gap:clamp(16px,4vw,64px); padding:clamp(28px,4vh,44px) 0; border-top:1px solid rgba(31,29,26,0.35); align-items:start">
-      <div aria-hidden="true" style="font-family:'Source Serif 4',serif; font-size:clamp(48px,7vw,110px); line-height:0.9; color:transparent; -webkit-text-stroke:1px rgba(31,29,26,0.4)">GA</div>
-      <div>
-        <h3 style="margin:0 0 10px; font-family:'Source Serif 4',serif; font-weight:500; font-size:clamp(28px,3.4vw,48px); line-height:1.1">General-Agent</h3>
-        <p style="margin:0 0 14px; max-width:58ch; font-size:16px; color:rgba(31,29,26,0.82)">A multi-agent AI system where Claude instances plan, delegate and execute instead of answering one prompt at a time. Built to answer a question I kept circling: how far can orchestration go before it genuinely needs a human? Further than I expected — and the interesting failures taught me more than the successes.</p>
-        <p style="margin:0; font-family:'Spline Sans Mono',monospace; font-size:13px; letter-spacing:0.08em; color:rgba(31,29,26,0.6)">Claude · React · Node.js · FastAPI</p>
-      </div>
-    </article>
-
-    <article data-reveal="true" style="display:grid; grid-template-columns:minmax(80px,0.22fr) minmax(280px,1fr); gap:clamp(16px,4vw,64px); padding:clamp(28px,4vh,44px) 0; border-top:1px solid rgba(31,29,26,0.35); border-bottom:1px solid rgba(31,29,26,0.35); align-items:start; margin-left:clamp(0px,6vw,96px)">
-      <div aria-hidden="true" style="font-family:'Source Serif 4',serif; font-size:clamp(48px,7vw,110px); line-height:0.9; color:transparent; -webkit-text-stroke:1px rgba(31,29,26,0.4)">CG</div>
-      <div>
-        <h3 style="margin:0 0 10px; font-family:'Source Serif 4',serif; font-weight:500; font-size:clamp(28px,3.4vw,48px); line-height:1.1">ChargeGuard</h3>
-        <p style="margin:0 0 14px; max-width:58ch; font-size:16px; color:rgba(31,29,26,0.82)">A native Android app that watches your phone's charging so you don't have to. Small scope, done properly, shipped. Not everything needs to be a platform — some things just need to work every single day.</p>
-        <p style="margin:0; font-family:'Spline Sans Mono',monospace; font-size:13px; letter-spacing:0.08em; color:rgba(31,29,26,0.6)">Kotlin · Android</p>
-      </div>
-    </article>
-  </section>
-
-  <!-- ─────────── CRAFT ─────────── -->
-  <section id="craft" data-screen-label="Craft" style="padding:clamp(64px,11vh,130px) clamp(20px,6vw,72px)">
-    <p data-reveal="true" style="margin:0 0 16px; font-family:'Spline Sans Mono',monospace; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent)">04 — How I actually work</p>
-    <h2 data-reveal="true" style="margin:0 0 clamp(40px,7vh,72px); font-family:'Source Serif 4',serif; font-weight:500; font-size:clamp(36px,5vw,72px); line-height:1.05; max-width:20ch">Three rules I keep re-learning on purpose.</h2>
-
-    <div data-reveal="true" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:clamp(24px,3.5vw,56px); margin-bottom:clamp(56px,9vh,100px)">
-      <div style="border-top:3px solid var(--accent); padding-top:20px">
-        <h3 style="margin:0 0 10px; font-family:'Source Serif 4',serif; font-weight:500; font-size:24px">Problem first, stack second.</h3>
-        <p style="margin:0; font-size:15.5px; color:rgba(31,29,26,0.78)">I don't pick a technology and hunt for uses. I find the thing people tolerate because "that's just how it is" — then build the fix.</p>
-      </div>
-      <div style="border-top:3px solid var(--accent); padding-top:20px">
-        <h3 style="margin:0 0 10px; font-family:'Source Serif 4',serif; font-weight:500; font-size:24px">AI-native, not AI-dependent.</h3>
-        <p style="margin:0; font-size:15.5px; color:rgba(31,29,26,0.78)">Claude, GPT and Gemini sit inside both my workflow and my products. The judgment about what actually ships stays mine.</p>
-      </div>
-      <div style="border-top:3px solid var(--accent); padding-top:20px">
-        <h3 style="margin:0 0 10px; font-family:'Source Serif 4',serif; font-weight:500; font-size:24px">Ship, then sharpen.</h3>
-        <p style="margin:0; font-size:15.5px; color:rgba(31,29,26,0.78)">One real user on version one teaches more than a month of polishing version zero. Production is the honest reviewer.</p>
-      </div>
-    </div>
-
-    <div data-reveal="true">
-      <div style="display:grid; grid-template-columns:minmax(90px,0.25fr) 1fr; gap:20px; padding:16px 0; border-top:1px solid rgba(31,29,26,0.14); align-items:baseline">
-        <span style="font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(31,29,26,0.55)">Front</span>
-        <span style="font-family:'Source Serif 4',serif; font-size:clamp(20px,2.4vw,32px)">React · Next.js</span>
-      </div>
-      <div style="display:grid; grid-template-columns:minmax(90px,0.25fr) 1fr; gap:20px; padding:16px 0; border-top:1px solid rgba(31,29,26,0.14); align-items:baseline">
-        <span style="font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(31,29,26,0.55)">Server</span>
-        <span style="font-family:'Source Serif 4',serif; font-size:clamp(20px,2.4vw,32px)">Node.js · Express</span>
-      </div>
-      <div style="display:grid; grid-template-columns:minmax(90px,0.25fr) 1fr; gap:20px; padding:16px 0; border-top:1px solid rgba(31,29,26,0.14); align-items:baseline">
-        <span style="font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(31,29,26,0.55)">Data</span>
-        <span style="font-family:'Source Serif 4',serif; font-size:clamp(20px,2.4vw,32px)">PostgreSQL · MongoDB · Prisma</span>
-      </div>
-      <div style="display:grid; grid-template-columns:minmax(90px,0.25fr) 1fr; gap:20px; padding:16px 0; border-top:1px solid rgba(31,29,26,0.14); align-items:baseline">
-        <span style="font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(31,29,26,0.55)">AI</span>
-        <span style="font-family:'Source Serif 4',serif; font-size:clamp(20px,2.4vw,32px)">Claude · GPT · Gemini</span>
-      </div>
-      <div style="display:grid; grid-template-columns:minmax(90px,0.25fr) 1fr; gap:20px; padding:16px 0; border-top:1px solid rgba(31,29,26,0.14); border-bottom:1px solid rgba(31,29,26,0.14); align-items:baseline">
-        <span style="font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(31,29,26,0.55)">Also</span>
-        <span style="font-family:'Source Serif 4',serif; font-size:clamp(20px,2.4vw,32px)">Kotlin (Android) · FastAPI</span>
-      </div>
-    </div>
-
-    <p data-reveal="true" style="margin:clamp(32px,5vh,48px) 0 0; max-width:60ch; font-size:15.5px; color:rgba(31,29,26,0.65)">
-      Off the clock: cricket, video games, and any strategy game with a tech tree. I like planning ten turns ahead. It shows.
-    </p>
-  </section>
-
-  <!-- ─────────── CRICKET ─────────── -->
-  <section data-screen-label="Cricket" style="background:#F0EEE6; border-top:1px solid #1F1D1A; padding:clamp(64px,11vh,130px) clamp(20px,6vw,72px)">
-    <p data-reveal="true" style="margin:0 0 16px; font-family:'Spline Sans Mono',monospace; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent)">06 — Beyond the terminal</p>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(32px,5vw,80px); align-items:start">
-      <div data-reveal="true">
-        <h2 style="margin:0 0 clamp(20px,3vh,32px); font-family:'Source Serif 4',serif; font-weight:500; font-size:clamp(38px,5vw,72px); line-height:1.04; letter-spacing:-0.01em">Cricket is the other thing I put 200% into.</h2>
-        <p style="margin:0 0 18px; font-size:clamp(16px,1.35vw,19px); color:rgba(31,29,26,0.82); max-width:52ch">I'm a batting all-rounder. Selected for the <strong style="font-weight:600">Under-16 district team</strong> — not as a formality, as someone who earned the seat the same way I earn anything: by showing up and being better prepared than expected.</p>
-        <p style="margin:0; font-size:clamp(16px,1.35vw,19px); color:rgba(31,29,26,0.72); max-width:52ch">The overlap with how I build software isn't metaphorical. Reading a pitch, adjusting mid-over, knowing when to defend and when to attack — it's the same mental model I use in production. Strategy games trained the same muscle. Cricket made it instinctive.</p>
-      </div>
-      <div data-reveal="true" style="display:flex; flex-direction:column; gap:20px">
-        <div style="border-top:3px solid var(--accent); padding-top:20px">
-          <p style="margin:0 0 6px; font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(31,29,26,0.55)">Role</p>
-          <p style="margin:0; font-family:'Source Serif 4',serif; font-size:clamp(22px,2.6vw,36px)">Batting all-rounder</p>
-        </div>
-        <div style="border-top:1px solid rgba(31,29,26,0.2); padding-top:20px">
-          <p style="margin:0 0 6px; font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(31,29,26,0.55)">Achievement</p>
-          <p style="margin:0; font-family:'Source Serif 4',serif; font-size:clamp(22px,2.6vw,36px)">Selected — U16 District</p>
-        </div>
-        <div style="border-top:1px solid rgba(31,29,26,0.2); padding-top:20px">
-          <p style="margin:0 0 6px; font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(31,29,26,0.55)">Also plays</p>
-          <p style="margin:0; font-family:'Source Serif 4',serif; font-size:clamp(22px,2.6vw,36px)">Strategy games · Video games</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─────────── CONTACT ─────────── -->
-  <section id="contact" data-screen-label="Contact" style="background:#1F1D1A; color:#FAF9F5; padding:clamp(64px,12vh,140px) clamp(20px,6vw,72px) clamp(40px,6vh,64px)">
-    <p data-reveal="true" style="margin:0 0 16px; font-family:'Spline Sans Mono',monospace; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent)">05 — Say vanakkam</p>
-    <h2 data-reveal="true" style="margin:0 0 clamp(32px,5vh,56px); font-family:'Source Serif 4',serif; font-weight:500; font-size:clamp(34px,4.6vw,68px); line-height:1.05; max-width:20ch">The form is that there's no form.</h2>
-
-    <a data-reveal="true" href="/cdn-cgi/l/email-protection#412920332832293133202f20376f362e332a01262c20282d6f222e2c" style="display:block; font-family:'Source Serif 4',serif; font-size:clamp(24px,4.8vw,72px); line-height:1.1; color:#FAF9F5; text-decoration:none; overflow-wrap:anywhere; border-bottom:2px solid var(--accent); padding-bottom:clamp(12px,2vh,24px); margin-bottom:clamp(36px,6vh,60px); max-width:max-content" style-hover="color:var(--accent)"><span class="__cf_email__" data-cfemail="c0a8a1b2a9b3a8b0b2a1aea1b6eeb7afb2ab80a7ada1a9aceea3afad">[email&#160;protected]</span></a>
-
-    <div data-reveal="true" style="display:flex; gap:clamp(20px,4vw,48px); flex-wrap:wrap; margin-bottom:clamp(48px,8vh,80px)">
-      <a href="https://www.instagram.com/harishpranav__/" target="_blank" rel="noopener" style="font-family:'Spline Sans Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(250,249,245,0.75); text-decoration:none" style-hover="color:var(--accent)">Instagram — @harishpranav__ ↗</a>
-      <a href="https://www.linkedin.com/in/harishpranav-r-209723308/" target="_blank" rel="noopener" style="font-family:'Spline Sans Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(250,249,245,0.75); text-decoration:none" style-hover="color:var(--accent)">LinkedIn — Harishpranav R ↗</a>
-      <a href="https://github.com/harishpranav-dev" target="_blank" rel="noopener" style="font-family:'Spline Sans Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(250,249,245,0.75); text-decoration:none" style-hover="color:var(--accent)">GitHub — harishpranav-dev ↗</a>
-    </div>
-
-    <p data-reveal="true" style="margin:0 0 clamp(48px,8vh,80px); max-width:52ch; font-size:15px; color:rgba(250,249,245,0.6)">
-      Fastest reply: email. Second fastest: Instagram DM. You can also reach out about cricket. If you're building something and need a techy co-builder — contact me.
-    </p>
-
-    <footer style="display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; border-top:1px solid rgba(250,249,245,0.16); padding-top:24px">
-      <span style="font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.1em; color:rgba(250,249,245,0.45)">© 2026 Harishpranav R — Duo_Stack</span>
-      <span style="font-family:'Spline Sans Mono',monospace; font-size:12px; letter-spacing:0.1em; color:rgba(250,249,245,0.45)">Feel free to reach out!</span>
-    </footer>
-  </section>
-
-</div>
-</x-dc>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{
-  &quot;accent&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#3E5C46&quot;, &quot;options&quot;: [&quot;#3E5C46&quot;, &quot;#D97757&quot;, &quot;#B04A2F&quot;, &quot;#7A2E35&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Theme&quot; },
-  &quot;showMarquee&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Theme&quot; }
-}">
-class Component extends DCLogic {
-  componentDidMount() {
-    this.applyAccent();
-    const els = document.querySelectorAll('[data-reveal]');
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) {
-        if (e.isIntersecting) {
-          e.target.style.opacity = '1';
-          e.target.style.transform = 'none';
-          io.unobserve(e.target);
+        renderVals() {
+          return {
+            showMarquee: this.props.showMarquee ?? true
+          };
         }
       }
-    }, { threshold: 0.12 });
-    els.forEach((el) => {
-      const r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight * 0.92) return;
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(26px)';
-      el.style.transition = 'opacity 0.8s cubic-bezier(.2,.6,.2,1), transform 0.8s cubic-bezier(.2,.6,.2,1)';
-      io.observe(el);
-    });
-    this._io = io;
-  }
-
-  componentWillUnmount() {
-    if (this._io) this._io.disconnect();
-  }
-
-  componentDidUpdate() {
-    this.applyAccent();
-  }
-
-  applyAccent() {
-    document.body.style.setProperty('--accent', this.props.accent ?? '#3E5C46');
-  }
-
-  renderVals() {
-    return {
-      showMarquee: this.props.showMarquee ?? true
-    };
-  }
-}
-</script>
-</body>
+    </script>
+  </body>
 </html>
